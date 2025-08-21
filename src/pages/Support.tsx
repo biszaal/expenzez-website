@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Phone, HelpCircle, Book, Zap } from 'lucide-react';
+import { Mail, MessageSquare, Phone, HelpCircle, Zap } from 'lucide-react';
 
 const Support: React.FC = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -44,70 +44,72 @@ const Support: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="page-container">
+      <div className="container">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">How can we help you?</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <div className="page-header">
+          <h1 className="page-title">How can we help you?</h1>
+          <p className="page-subtitle">
             Get support, find answers to common questions, or reach out to our team directly.
           </p>
         </div>
 
         {/* Contact Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white rounded-lg p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
-              <Mail className="h-8 w-8 text-primary-600" />
+        <div className="support-grid">
+          <div className="support-card">
+            <div className="support-icon">
+              <Mail size={24} />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Email Support</h3>
-            <p className="text-gray-600 mb-4">Get help via email. We typically respond within 24 hours.</p>
+            <h3>Email Support</h3>
+            <p>Get help via email. We typically respond within 24 hours.</p>
             <a
               href="mailto:support@expenzez.com"
-              className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors"
+              style={{ color: '#6366f1', fontWeight: '500', textDecoration: 'none' }}
             >
               support@expenzez.com
             </a>
           </div>
 
-          <div className="bg-white rounded-lg p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary-100 rounded-full mb-4">
-              <MessageSquare className="h-8 w-8 text-secondary-600" />
+          <div className="support-card">
+            <div className="support-icon">
+              <MessageSquare size={24} />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">In-App Chat</h3>
-            <p className="text-gray-600 mb-4">Chat with our AI assistant or reach support directly in the app.</p>
-            <span className="text-secondary-600 font-medium">Available in Expenzez app</span>
+            <h3>In-App Chat</h3>
+            <p>Chat with our AI assistant or reach support directly in the app.</p>
+            <span style={{ color: '#8b5cf6', fontWeight: '500' }}>Available in Expenzez app</span>
           </div>
 
-          <div className="bg-white rounded-lg p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-              <Zap className="h-8 w-8 text-green-600" />
+          <div className="support-card">
+            <div className="support-icon">
+              <Zap size={24} />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Quick Help</h3>
-            <p className="text-gray-600 mb-4">Browse our help center for instant answers to common questions.</p>
-            <span className="text-green-600 font-medium">Available 24/7</span>
+            <h3>Quick Help</h3>
+            <p>Browse our help center for instant answers to common questions.</p>
+            <span style={{ color: '#10b981', fontWeight: '500' }}>Available 24/7</span>
           </div>
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div className="faq-container">
+          <h2 className="faq-title">Frequently Asked Questions</h2>
           
-          <div className="space-y-4">
+          <div>
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg">
+              <div key={index} className="faq-item">
                 <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  className="faq-question"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="text-lg font-medium text-gray-900">{faq.question}</span>
-                  <HelpCircle className={`h-5 w-5 text-gray-500 transform transition-transform ${
-                    expandedFaq === index ? 'rotate-180' : ''
-                  }`} />
+                  <span>{faq.question}</span>
+                  <HelpCircle size={20} style={{ 
+                    color: '#6b7280',
+                    transform: expandedFaq === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.2s'
+                  }} />
                 </button>
                 {expandedFaq === index && (
-                  <div className="px-6 pb-4 border-t border-gray-200">
-                    <p className="text-gray-700 leading-relaxed mt-4">{faq.answer}</p>
+                  <div className="faq-answer">
+                    <p>{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -115,109 +117,52 @@ const Support: React.FC = () => {
           </div>
         </div>
 
-        {/* Additional Resources */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg p-8 text-white">
-            <Book className="h-12 w-12 text-primary-200 mb-4" />
-            <h3 className="text-2xl font-bold mb-2">User Guide</h3>
-            <p className="text-primary-100 mb-4">
-              Learn how to make the most of Expenzez with our comprehensive user guide and tutorials.
-            </p>
-            <button className="bg-white text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-              View User Guide
-            </button>
-          </div>
-
-          <div className="bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-lg p-8 text-white">
-            <MessageSquare className="h-12 w-12 text-secondary-200 mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Community Forum</h3>
-            <p className="text-secondary-100 mb-4">
-              Connect with other Expenzez users, share tips, and get help from the community.
-            </p>
-            <button className="bg-white text-secondary-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-              Join Community
-            </button>
-          </div>
-        </div>
-
         {/* Emergency Contact */}
-        <div className="mt-16 bg-red-50 border border-red-200 rounded-lg p-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-            <Phone className="h-8 w-8 text-red-600" />
+        <div style={{
+          marginTop: '3rem',
+          background: '#fef2f2',
+          border: '1px solid #fecaca',
+          borderRadius: '1rem',
+          padding: '2rem',
+          textAlign: 'center'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            width: '4rem',
+            height: '4rem',
+            background: '#fee2e2',
+            borderRadius: '50%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '1rem',
+            color: '#dc2626'
+          }}>
+            <Phone size={24} />
           </div>
-          <h3 className="text-xl font-bold text-red-900 mb-2">Security Concerns?</h3>
-          <p className="text-red-700 mb-4">
+          <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#7f1d1d', marginBottom: '1rem' }}>Security Concerns?</h3>
+          <p style={{ color: '#991b1b', marginBottom: '1.5rem', lineHeight: '1.6' }}>
             If you notice any suspicious activity on your accounts or have security concerns, 
             contact us immediately and your bank directly.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
             <a
               href="mailto:security@expenzez.com"
-              className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+              className="btn btn-primary"
+              style={{ 
+                background: '#dc2626', 
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
             >
-              <Mail className="w-5 h-5 mr-2" />
+              <Mail size={16} />
               security@expenzez.com
             </a>
-            <span className="text-red-600 font-medium px-6 py-3">
+            <span style={{ color: '#dc2626', fontWeight: '500' }}>
               Response time: Within 1 hour
             </span>
           </div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="mt-16 bg-white rounded-lg shadow-lg p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Still need help?</h2>
-          
-          <form className="max-w-2xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-            
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-                <option>General Question</option>
-                <option>Account Connection Issue</option>
-                <option>Transaction Not Appearing</option>
-                <option>AI Assistant Question</option>
-                <option>Security Concern</option>
-                <option>Feature Request</option>
-                <option>Bug Report</option>
-                <option>Other</option>
-              </select>
-            </div>
-            
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-              <textarea
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                placeholder="Please describe your issue or question in detail..."
-              ></textarea>
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full btn-primary"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
       </div>
     </div>

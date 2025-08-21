@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Shield, 
   Brain, 
@@ -11,6 +11,28 @@ import {
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    animateElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      animateElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   const features = [
     {
       icon: <CreditCard size={24} />,
@@ -106,14 +128,14 @@ const HomePage: React.FC = () => {
       {/* Features Section */}
       <section className="features">
         <div className="container">
-          <h2>Key Features</h2>
-          <p className="features-subtitle">
+          <h2 className="animate-on-scroll">Key Features</h2>
+          <p className="features-subtitle animate-on-scroll">
             Everything you need to manage your UK finances in one secure app.
           </p>
 
           <div className="features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card">
+              <div key={index} className={`feature-card animate-on-scroll delay-${(index % 3) + 1}`}>
                 <div className="feature-icon">
                   {feature.icon}
                 </div>
@@ -128,13 +150,13 @@ const HomePage: React.FC = () => {
       {/* CTA Section */}
       <section className="cta">
         <div className="container">
-          <h2>Ready to get started?</h2>
+          <h2 className="animate-on-scroll">Ready to get started?</h2>
           
-          <p>
+          <p className="animate-on-scroll">
             Download Expenzez today and start taking control of your finances with smart UK banking integration.
           </p>
           
-          <div className="cta-buttons">
+          <div className="cta-buttons animate-on-scroll">
             <a
               href="https://apps.apple.com/app/expenzez"
               className="btn btn-primary"
