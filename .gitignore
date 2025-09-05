@@ -1,0 +1,117 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.secure
+
+# AWS and deployment
+.aws/
+.serverless/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Debug files
+debug*
+*debug*
+test-*.ts
+analyze-*.ts
+
+# Security sensitive files
+*.pem
+*.key
+*.crt
+secrets.*
+auth.json
+
+# Local development
+.local
+local.*
+
+# Expo
+.expo/
+expo-env.d.ts
+
+# Expo Prebuild - exclude native folders since we use CNG
+/expenzez-frontend/ios
+/expenzez-frontend/android
+
+# iOS
+ios/Pods/
+ios/.xcode.env.local
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+android/app/debug
+android/app/release
+
+# Package managers
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
