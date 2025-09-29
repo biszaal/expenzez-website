@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Expenzez is a full-stack expense tracking mobile application built with React Native (Expo) frontend and Node.js/TypeScript backend. The app provides banking integration, AI-powered financial insights, budget tracking, and comprehensive transaction management.
+Expenzez is a full-stack expense tracking mobile application built with React Native (Expo) frontend and Node.js/TypeScript backend. The app provides AI-powered financial insights, budget tracking, and comprehensive transaction management.
 
 ## Repository Structure
 
@@ -56,13 +56,11 @@ serverless offline          # Run Lambda functions locally
 - **Dual Deployment**: Express.js server + AWS Lambda functions
 - **Database**: AWS DynamoDB with 11+ tables for different data types
 - **Authentication**: AWS Cognito with JWT tokens
-- **Banking Integration**: TrueLayer API for UK bank connections
 - **AI Features**: Custom AI service providing financial insights
 - **API Design**: RESTful endpoints under `/api/` prefix
 
 ### Key Features
-- **Banking**: Connect multiple UK bank accounts via TrueLayer OAuth
-- **Transactions**: Automated transaction sync and categorization
+- **Transactions**: Manual transaction entry and categorization
 - **AI Assistant**: Chat-based financial advisor with personalized insights
 - **Budgets**: Create and track spending budgets with alerts
 - **Credit Score**: Monitor credit score changes
@@ -95,7 +93,7 @@ The application uses the following DynamoDB tables:
 
 ### Lambda Functions (`functions/`)
 - `auth/` - Cognito user management
-- `banking/` - TrueLayer integration and transaction processing
+- `transactions/` - Transaction processing and management
 - `notifications/` - Background notification processing
 - `profile/` - User profile and credit score services
 
@@ -109,7 +107,6 @@ The application uses the following DynamoDB tables:
 ### Backend Environment Variables
 Key variables required for backend operation:
 - `COGNITO_USER_POOL_ID` & `COGNITO_CLIENT_ID` - AWS Cognito authentication
-- `TRUELAYER_CLIENT_ID` & `TRUELAYER_CLIENT_SECRET` - Banking API access
 - `OPENAI_API_KEY` - For enhanced AI features (optional)
 - `AWS_REGION` - Set to `eu-west-2` (London)
 
@@ -139,11 +136,11 @@ Key variables required for backend operation:
 3. Automatic token refresh via API interceptors
 4. Biometric/PIN protection for app access
 
-### Banking Integration
-1. OAuth flow through TrueLayer for bank consent
-2. Account and transaction data synced to DynamoDB
-3. Background refresh jobs maintain data freshness
-4. Fallback to cached data when bank tokens expire
+### Transaction Management
+1. Manual transaction entry by users
+2. Transaction data stored in DynamoDB
+3. AI-powered categorization and insights
+4. Real-time balance calculation
 
 ### AI Assistant
 1. Contextual responses based on user's financial data
@@ -171,7 +168,7 @@ The AI assistant functionality was recently fixed and deployed. The issue was mi
 ### Common Issues
 - **Build failures**: Check TypeScript errors in both frontend/backend
 - **API connection**: Verify AWS Lambda deployment and DynamoDB table existence
-- **Banking errors**: Check TrueLayer API credentials and consent flow
+- **Transaction errors**: Check transaction validation and processing
 - **Push notifications**: Ensure notification tokens are properly registered
 - **AI assistant "Not Found"**: Ensure AI Lambda functions are deployed (`serverless deploy`)
 
