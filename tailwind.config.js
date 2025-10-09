@@ -2,6 +2,14 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",
+  ],
+  safelist: [
+    'bg-gradient-to-r',
+    'from-purple-600',
+    'to-blue-600',
+    'bg-clip-text',
+    'text-transparent',
   ],
   theme: {
     extend: {

@@ -129,11 +129,11 @@ const HomePage: React.FC = () => {
       <section className="cta">
         <div className="container">
           <h2>Ready to get started?</h2>
-          
+
           <p>
             Download Expenzez today and start taking control of your finances with smart UK banking integration.
           </p>
-          
+
           <div className="cta-buttons">
             <a
               href="https://apps.apple.com/app/expenzez"
@@ -144,11 +144,15 @@ const HomePage: React.FC = () => {
               <Download size={16} />
               Download for iOS
             </a>
-            
+
             <div className="coming-soon">
               Android version coming soon
             </div>
           </div>
+
+          <p style={{ marginTop: '2rem', color: '#6b7280', fontSize: '0.95rem' }}>
+            Proudly developed by <strong>Biszaal Tech Ltd.</strong> - London, United Kingdom
+          </p>
         </div>
       </section>
     </div>
