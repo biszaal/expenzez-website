@@ -157,16 +157,17 @@ const PrivacyPolicy: React.FC = () => {
               <p className="text-gray-700 mb-4">
                 If you have any questions about this Privacy Policy, please contact us:
               </p>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-gray-700 mb-2"><strong>Email:</strong> <a href="mailto:privacy@expenzez.com" className="text-primary-600 hover:text-primary-700">privacy@expenzez.com</a></p>
-                <p className="text-gray-700 mb-2"><strong>Support:</strong> <a href="mailto:support@expenzez.com" className="text-primary-600 hover:text-primary-700">support@expenzez.com</a></p>
+              <div className="bg-gradient-to-br from-purple-50 to-blue-50 border border-purple-200 p-6 rounded-xl shadow-sm">
+                <p className="text-gray-800 mb-2 font-medium"><strong>Company:</strong> Biszaal Tech Ltd.</p>
+                <p className="text-gray-700 mb-2"><strong>Email:</strong> <a href="mailto:privacy@expenzez.com" className="text-purple-600 hover:text-purple-700 font-medium">privacy@expenzez.com</a></p>
+                <p className="text-gray-700 mb-2"><strong>Support:</strong> <a href="mailto:support@expenzez.com" className="text-purple-600 hover:text-purple-700 font-medium">support@expenzez.com</a></p>
                 <p className="text-gray-700"><strong>Address:</strong> London, United Kingdom</p>
               </div>
             </section>
 
-            <div className="bg-primary-50 p-6 rounded-lg mt-8">
-              <p className="text-primary-800 font-medium">
-                <strong>Regulatory Compliance:</strong> Expenzez operates in compliance with UK GDPR, 
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-xl shadow-lg mt-8">
+              <p className="text-white font-medium leading-relaxed">
+                <strong className="text-white">Regulatory Compliance:</strong> Expenzez, operated by Biszaal Tech Ltd., complies with UK GDPR,
                 the Data Protection Act 2018, and FCA regulations for financial services.
               </p>
             </div>
