@@ -1,10 +1,9 @@
 import React from 'react';
-import { 
-  Shield, 
-  Brain, 
-  CreditCard, 
-  Bell, 
-  Zap, 
+import {
+  Shield,
+  Brain,
+  CreditCard,
+  Zap,
   Download,
   Sparkles,
   TrendingUp
