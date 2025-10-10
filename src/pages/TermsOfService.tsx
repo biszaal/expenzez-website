@@ -36,7 +36,7 @@ const TermsOfService: React.FC = () => {
             <h2>3. Eligibility</h2>
             <p>
               You must be at least 18 years old and have the legal capacity to enter into these Terms.
-              Our Service is currently available only to residents of the United Kingdom with UK bank accounts.
+              Our Service is available to all users who want to track their expenses manually or via CSV import.
             </p>
           </section>
 
@@ -55,15 +55,16 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>5. Banking Integration</h2>
+            <h2>5. Transaction Data</h2>
             <p>
-              Our banking services are provided through secure third-party providers like TrueLayer:
+              Our service allows you to manage your financial data through:
             </p>
             <ul>
-              <li>You authorize us to access your banking information through these providers</li>
-              <li>We cannot make transactions or move money from your accounts</li>
-              <li>You can revoke access at any time through your bank or our app</li>
-              <li>We are not responsible for issues with third-party banking services</li>
+              <li>Manual entry of transactions with your own data</li>
+              <li>CSV import of transaction history from bank statements or other sources</li>
+              <li>You are responsible for the accuracy of data you input</li>
+              <li>We do not have access to your actual bank accounts or move money</li>
+              <li>You can delete your transaction data at any time</li>
             </ul>
           </section>
 

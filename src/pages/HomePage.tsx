@@ -13,34 +13,34 @@ import {
 const HomePage: React.FC = () => {
   const features = [
     {
-      icon: <CreditCard size={24} />,
-      title: "UK Banking Integration",
-      description: "Connect all your UK bank accounts securely via TrueLayer. Real-time transaction sync and categorization."
+      icon: <Brain size={24} />,
+      title: "AI Financial Assistant",
+      description: "Your personal AI advisor analyzes spending patterns and provides intelligent recommendations to help you save money and reach financial goals faster."
     },
     {
-      icon: <Brain size={24} />,
-      title: "AI-Powered Insights",
-      description: "Get personalized financial advice from our intelligent AI assistant. Chat-based interface for instant guidance."
+      icon: <Sparkles size={24} />,
+      title: "Smart Categorization",
+      description: "AI automatically categorizes your transactions and identifies spending trends. Get instant insights without manual effort."
+    },
+    {
+      icon: <CreditCard size={24} />,
+      title: "Manual & CSV Import",
+      description: "Add transactions manually or bulk import via CSV. Perfect for cash expenses, freelancers, and small businesses."
+    },
+    {
+      icon: <TrendingUp size={24} />,
+      title: "Predictive Analytics",
+      description: "AI predicts future spending patterns and alerts you before you exceed budgets. Stay ahead of your finances."
+    },
+    {
+      icon: <Zap size={24} />,
+      title: "Instant AI Insights",
+      description: "Ask your AI assistant anything about your finances. Get instant answers, tips, and personalized advice in natural language."
     },
     {
       icon: <Shield size={24} />,
       title: "Bank-Grade Security",
-      description: "Advanced encryption, biometric authentication, and PIN protection. Your data is always secure."
-    },
-    {
-      icon: <TrendingUp size={24} />,
-      title: "Smart Analytics",
-      description: "Visualize your spending patterns with beautiful charts and get actionable insights to improve your finances."
-    },
-    {
-      icon: <Bell size={24} />,
-      title: "Smart Notifications",
-      description: "Real-time transaction alerts and spending notifications. Stay informed about your finances."
-    },
-    {
-      icon: <Zap size={24} />,
-      title: "Instant Sync",
-      description: "Lightning-fast transaction synchronization across all your connected accounts."
+      description: "Advanced encryption, biometric authentication, and PIN protection. Your financial data is always secure and private."
     }
   ];
 
@@ -56,12 +56,12 @@ const HomePage: React.FC = () => {
           </div>
           
           <h1>
-            Smart Expense Tracking for
-            <span> UK Users</span>
+            AI-Powered Expense Tracking
+            <span> That Understands You</span>
           </h1>
-          
+
           <p>
-            Connect your UK banks, track spending with AI insights, and take control of your finances.
+            Your personal AI financial advisor that learns your spending habits, predicts future expenses, and helps you save money automatically.
           </p>
           
           <div className="button-group">
@@ -106,9 +106,9 @@ const HomePage: React.FC = () => {
       {/* Features Section */}
       <section className="features">
         <div className="container">
-          <h2>Key Features</h2>
+          <h2>AI That Works For You</h2>
           <p className="features-subtitle">
-            Everything you need to manage your UK finances in one secure app.
+            Powered by advanced artificial intelligence to give you smarter financial insights and effortless expense management.
           </p>
 
           <div className="features-grid">
@@ -128,10 +128,10 @@ const HomePage: React.FC = () => {
       {/* CTA Section */}
       <section className="cta">
         <div className="container">
-          <h2>Ready to get started?</h2>
+          <h2>Ready to let AI manage your expenses?</h2>
 
           <p>
-            Download Expenzez today and start taking control of your finances with smart UK banking integration.
+            Join thousands of users who trust Expenzez AI to track, analyze, and optimize their spending. Get personalized insights in seconds.
           </p>
 
           <div className="cta-buttons">

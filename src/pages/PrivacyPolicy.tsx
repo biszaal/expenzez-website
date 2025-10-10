@@ -38,13 +38,13 @@ const PrivacyPolicy: React.FC = () => {
 
             <h3>2.2 Financial Data</h3>
             <p>
-              Through our secure integration with TrueLayer and other authorized financial service providers,
-              we access:
+              When you manually add transactions or import via CSV, we collect:
             </p>
             <ul>
-              <li>Bank account information and balances</li>
-              <li>Transaction history and details</li>
-              <li>Account categorization and spending patterns</li>
+              <li>Transaction amounts, dates, and descriptions</li>
+              <li>Transaction categories and merchant names</li>
+              <li>Account balances and spending patterns</li>
+              <li>Budget and savings goal information</li>
             </ul>
 
             <h3>2.3 Usage Information</h3>
@@ -91,7 +91,7 @@ const PrivacyPolicy: React.FC = () => {
               We do not sell your personal information. We may share your information only in the following circumstances:
             </p>
             <ul>
-              <li><strong>Service Providers:</strong> With trusted third-party providers (like TrueLayer) who help us operate our services</li>
+              <li><strong>Service Providers:</strong> With trusted third-party providers who help us operate our AI services, cloud infrastructure, and analytics</li>
               <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
               <li><strong>Business Transfer:</strong> In connection with a merger, acquisition, or sale of assets</li>
               <li><strong>Consent:</strong> When you explicitly consent to sharing</li>
