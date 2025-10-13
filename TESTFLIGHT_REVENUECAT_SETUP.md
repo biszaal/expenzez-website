@@ -13,6 +13,7 @@ The app is showing **"Purchase Error"** and **"No subscription options are avail
 ### **1. Set Up RevenueCat API Keys**
 
 #### **Step 1: Get RevenueCat API Keys**
+
 1. Go to [RevenueCat Dashboard](https://app.revenuecat.com/apps)
 2. Select your app: **Expenzez**
 3. Go to **API Keys** section
@@ -21,6 +22,7 @@ The app is showing **"Purchase Error"** and **"No subscription options are avail
 #### **Step 2: Configure Environment Variables**
 
 **Create `.env` file in frontend:**
+
 ```bash
 # RevenueCat API Keys
 EXPO_PUBLIC_REVENUECAT_IOS_API_KEY=appl_YOUR_ACTUAL_IOS_API_KEY_HERE
@@ -28,6 +30,7 @@ EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY=goog_YOUR_ACTUAL_ANDROID_API_KEY_HERE
 ```
 
 **Or set in EAS Build:**
+
 ```bash
 eas secret:create --scope project --name EXPO_PUBLIC_REVENUECAT_IOS_API_KEY --value "appl_YOUR_ACTUAL_IOS_API_KEY_HERE"
 eas secret:create --scope project --name EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY --value "goog_YOUR_ACTUAL_ANDROID_API_KEY_HERE"
@@ -38,18 +41,27 @@ eas secret:create --scope project --name EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY 
 **File**: `expenzez-frontend/services/revenueCatService.ts`
 
 **Current Issue:**
+
 ```typescript
 const REVENUECAT_API_KEY = {
-  ios: process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY || "appl_YOUR_IOS_API_KEY",
-  android: process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY || "goog_YOUR_ANDROID_API_KEY",
+  ios:
+    process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY || "appl_YOUR_IOS_API_KEY",
+  android:
+    process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY ||
+    "goog_YOUR_ANDROID_API_KEY",
 };
 ```
 
 **Fix Required:**
+
 ```typescript
 const REVENUECAT_API_KEY = {
-  ios: process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY || "appl_YOUR_ACTUAL_IOS_API_KEY",
-  android: process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY || "goog_YOUR_ACTUAL_ANDROID_API_KEY",
+  ios:
+    process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY ||
+    "appl_YOUR_ACTUAL_IOS_API_KEY",
+  android:
+    process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY ||
+    "goog_YOUR_ACTUAL_ANDROID_API_KEY",
 };
 ```
 
@@ -120,6 +132,7 @@ static async initialize(userId?: string): Promise<{ success: boolean; error?: st
 ## 🚀 **DEPLOYMENT STEPS**
 
 ### **Step 1: Configure API Keys**
+
 ```bash
 # Set environment variables
 export EXPO_PUBLIC_REVENUECAT_IOS_API_KEY="appl_YOUR_ACTUAL_IOS_API_KEY"
@@ -127,6 +140,7 @@ export EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY="goog_YOUR_ACTUAL_ANDROID_API_KEY"
 ```
 
 ### **Step 2: Update EAS Build Configuration**
+
 **File**: `expenzez-frontend/eas.json`
 
 ```json
@@ -143,6 +157,7 @@ export EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY="goog_YOUR_ACTUAL_ANDROID_API_KEY"
 ```
 
 ### **Step 3: Build and Deploy**
+
 ```bash
 # Build for TestFlight
 eas build --platform ios --profile production
