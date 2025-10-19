@@ -12,34 +12,24 @@ This application is currently deployed in production with real users. Exercise e
 
 #### Frontend Repository (`expenzez-frontend/`)
 - **`main`** - 🔴 **PRODUCTION BRANCH** (Live on App Store)
-  - Current features: Manual transaction entry + CSV import
+  - Current features: Manual transaction entry + CSV import + Premium subscriptions
   - DO NOT merge unfinished features to this branch
   - All changes must be thoroughly tested before merging
-
-- **`finexer-integration`** - 🟡 **DEVELOPMENT BRANCH** (Active Development)
-  - New feature: Finexer Open Banking API integration
-  - Not yet deployed to production
-  - Safe for experimental changes
 
 #### Backend Repository (`expenzez-backend/`)
 - **`main`** - 🔴 **PRODUCTION BRANCH** (Serving live app)
   - **⚠️ EXTREMELY SENSITIVE**: Changes here affect all production users immediately
-  - Current features: Manual transaction entry + CSV import
+  - Current features: Manual transaction entry + CSV import + Subscription webhooks
   - Always test locally before deploying
   - Consider impact on live users before any Lambda deployment
 
-- **`finexer-integration`** - 🟡 **DEVELOPMENT BRANCH** (Active Development)
-  - New feature: Finexer Open Banking API integration
-  - Not yet connected to production
-  - Safe for experimental changes
-
-- **`development`** - 🟢 **GENERAL DEVELOPMENT BRANCH**
-  - Used for general backend development work
+- **`development`** - 🟢 **DEVELOPMENT BRANCH**
+  - Used for general backend development work and new features
 
 ### Production Safety Guidelines
 
 **BEFORE making ANY backend changes:**
-1. ✅ Verify you're on the correct branch (`main` for production fixes, `finexer-integration` for new features)
+1. ✅ Verify you're on the correct branch (`main` for production, `development` for new features)
 2. ✅ Test changes locally using `serverless offline`
 3. ✅ Consider the impact on existing production users
 4. ✅ Review all Lambda function changes carefully
@@ -54,7 +44,7 @@ This application is currently deployed in production with real users. Exercise e
 - Keep fixes isolated and minimal
 
 **New Features:**
-- Develop new features on `finexer-integration` or feature branches
+- Develop new features on `development` or feature branches
 - NEVER merge incomplete features to `main`
 - Thoroughly test integration before merging to production
 
@@ -66,22 +56,15 @@ This application is currently deployed in production with real users. Exercise e
 - ✅ CSV import functionality
 - ✅ AI-powered insights
 - ✅ Budget tracking
-- ✅ Premium subscriptions (RevenueCat)
-- 🐛 Currently has bug reports that need fixing
-
-**In Development (`finexer-integration` branch):**
-- 🔨 Finexer Open Banking API integration
-- 🔨 Automatic bank transaction sync
-- 🔨 Multi-bank connections
-- 🔨 Real-time account balance updates
-- ⏳ Not yet deployed to production
+- ✅ Premium subscriptions (RevenueCat) - Code complete, needs App Store setup
+- ✅ Push notifications
+- ✅ Security (biometric/PIN)
 
 ## Project Overview
 
 Expenzez is a full-stack expense tracking mobile application built with React Native (Expo) frontend and Node.js/TypeScript backend. The app provides AI-powered financial insights, budget tracking, and comprehensive transaction management.
 
-**Current Production Version:** Manual transaction entry + CSV import + AI insights
-**In Development:** Open Banking integration via Finexer API
+**Current Production Version:** Manual transaction entry + CSV import + AI insights + Premium subscriptions
 
 ## Repository Structure
 
@@ -148,12 +131,6 @@ serverless offline          # Run Lambda functions locally
 - **Security**: Biometric authentication and PIN protection
 - **Premium Subscriptions**: RevenueCat integration for premium features
 
-**In Development (finexer-integration branch):**
-- **Open Banking**: Finexer API integration for automatic bank connections
-- **Bank Sync**: Automatic transaction synchronization from connected banks
-- **Real-time Balances**: Live account balance updates
-- **Multi-bank Support**: Connect multiple bank accounts simultaneously
-
 ## Database Schema (DynamoDB)
 
 The application uses the following DynamoDB tables:
@@ -210,8 +187,8 @@ Key variables required for backend operation:
 6. ✅ Deploy carefully during low-usage hours
 7. ✅ Monitor CloudWatch logs after deployment
 
-**For New Features (`finexer-integration` or feature branches):**
-1. ✅ Work on `finexer-integration` or create new feature branch
+**For New Features (`development` or feature branches):**
+1. ✅ Work on `development` or create new feature branch
 2. ✅ Develop freely without worrying about production impact
 3. ✅ Test thoroughly before merging
 4. ✅ Keep branch up-to-date with `main`
@@ -237,7 +214,7 @@ Key variables required for backend operation:
 - **Lambda**: Use `serverless offline` for local testing
 - **Integration**:
   - **Production (`main`)**: Frontend points to production AWS API Gateway
-  - **Development (`finexer-integration`)**: Can test with local backend or dev environment
+  - **Development (`development`)**: Can test with local backend or dev environment
 
 ### Deployment Process
 
@@ -255,7 +232,7 @@ Key variables required for backend operation:
   4. Monitor CloudWatch logs for errors
   5. Be ready to rollback if issues occur
 
-**Development Deployment (`finexer-integration` branch):**
+**Development Deployment (`development` branch):**
 - **Frontend**: Test with Expo Go or development builds
 - **Backend**: Deploy to separate development environment (if configured)
 - No impact on production users
@@ -288,16 +265,17 @@ Key variables required for backend operation:
 
 ## Recent Changes & Updates
 
-### Finexer Open Banking Integration (In Development)
-The Finexer Open Banking API integration is currently being developed on the `finexer-integration` branch:
-- Complete OAuth2 authorization flow implemented
-- Bank account retrieval and management system built
-- Transaction synchronization system for automatic data import
-- Separate CloudFormation stack for banking functions deployed
-- Complete backend isolation from production environment
-- Mock data fallback system for development testing
+### Premium Subscription System (Oct 18, 2025)
+RevenueCat subscription system fully implemented:
+- Complete SDK integration in frontend
+- Subscription plans screen with Monthly (£4.99) and Annual (£49.99) options
+- Free tier limits: 3 budgets, 5 AI queries/day
+- Premium feature gating throughout app
+- Backend webhook handler for subscription events
+- 14-day free trial for all subscriptions
 
-**Status**: ✅ Backend deployed and working, ⏳ Frontend integration in progress
+**Status**: ✅ Code 100% complete, ⏳ Needs App Store product setup
+**Guide**: See `SUBSCRIPTION_GUIDE.md` for setup instructions
 
 ### Known Production Bugs
 
@@ -337,7 +315,7 @@ The Finexer Open Banking API integration is currently being developed on the `fi
 **⚠️ Other Reported Bugs:**
 - (User to provide additional bug reports if any)
 
-**Important**: All production bug fixes should be made on the `main` branch, NOT on `finexer-integration`.
+**Important**: All production bug fixes should be made on the `main` branch.
 
 ## Troubleshooting
 
