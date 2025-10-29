@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+- In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision
+
 ## ⚠️ CRITICAL: Production App Status
 
 **🚨 THE APP IS LIVE ON THE APP STORE 🚨**
@@ -65,6 +67,9 @@ This application is currently deployed in production with real users. Exercise e
 Expenzez is a full-stack expense tracking mobile application built with React Native (Expo) frontend and Node.js/TypeScript backend. The app provides AI-powered financial insights, budget tracking, and comprehensive transaction management.
 
 **Current Production Version:** Manual transaction entry + CSV import + AI insights + Premium subscriptions
+
+## Git
+- When creating branches, prefix them with biszaal/ to indicate they came from me.
 
 ## Repository Structure
 
