@@ -11,11 +11,19 @@ const AccountDeletion: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitted(true);
-      setLoading(false);
-    }, 1000);
+    // Open the user's email client with a pre-filled deletion request.
+    // privacy@expenzez.com is the official GDPR contact (see below).
+    const subject = encodeURIComponent("Account Deletion Request");
+    const body = encodeURIComponent(
+      `Account email: ${email}\n` +
+        `Reason: ${reason || "(not provided)"}\n\n` +
+        `I confirm I want to permanently delete my Expenzez account and ` +
+        `all associated data in line with UK GDPR.`
+    );
+    window.location.href = `mailto:privacy@expenzez.com?subject=${subject}&body=${body}`;
+
+    setSubmitted(true);
+    setLoading(false);
   };
 
   if (submitted) {
@@ -26,26 +34,28 @@ const AccountDeletion: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
               <CheckCircle size={64} color="#10b981" />
             </div>
-            <h1>Request Submitted</h1>
+            <h1>Check Your Email Client</h1>
             <p>
-              Your account deletion request has been successfully submitted.
+              Your email client should have opened with a pre-filled deletion
+              request to <strong>privacy@expenzez.com</strong>. Please review
+              and send the email to complete your request.
             </p>
           </div>
 
           <div className="support-card" style={{ maxWidth: '700px', margin: '0 auto 2rem' }}>
             <div style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '1rem', color: '#111827' }}>
-                Reference ID: DDR-{Date.now()}
+                What happens next?
               </h3>
               <div style={{ textAlign: 'left', color: '#374151' }}>
-                <h4 style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>What happens next?</h4>
                 <ol style={{ paddingLeft: '1.5rem', lineHeight: '2' }}>
-                  <li>You will receive a confirmation email at <strong>{email}</strong></li>
-                  <li>Your account and all associated data will be permanently deleted within 30 days</li>
-                  <li>You will receive a final confirmation email once the deletion is complete</li>
+                  <li>Send the email from <strong>{email}</strong> (or any address — we'll verify ownership)</li>
+                  <li>We'll confirm receipt within 2 business days</li>
+                  <li>Your account and all associated data will be permanently deleted within 30 days, per UK GDPR</li>
                 </ol>
                 <p style={{ marginTop: '1.5rem', padding: '1rem', background: '#f3f4f6', borderRadius: '0.5rem' }}>
-                  💡 If you need to contact us about this request, please reference the ID above.
+                  If your email client didn't open, please email{' '}
+                  <a href="mailto:privacy@expenzez.com">privacy@expenzez.com</a> directly.
                 </p>
               </div>
               <a href="/" className="btn btn-primary" style={{ marginTop: '1.5rem', display: 'inline-flex' }}>

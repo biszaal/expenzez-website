@@ -1,129 +1,104 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Smartphone, Mail, MapPin, Download } from "lucide-react";
+import { Wallet, Mail, MapPin } from "lucide-react";
 
 const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-container">
-          {/* Brand */}
           <div className="footer-brand">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "1rem",
-              }}
-            >
-              <Smartphone
-                size={32}
-                style={{ color: "#8b5cf6", marginRight: "0.5rem" }}
-              />
-              <span style={{ fontSize: "1.5rem", fontWeight: "700" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.65rem" }}>
+              <span
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 12,
+                  background: "linear-gradient(135deg, #7B3FE4 0%, #481B91 100%)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#fff",
+                  boxShadow: "0 12px 32px -8px rgba(123,63,228,0.45)",
+                }}
+              >
+                <Wallet size={20} strokeWidth={2.25} />
+              </span>
+              <span style={{ fontSize: "1.4rem", fontWeight: 700, letterSpacing: "-0.02em", color: "#fff" }}>
                 Expenzez
               </span>
             </div>
-            <p
-              style={{
-                color: "#d1d5db",
-                marginBottom: "1.5rem",
-                maxWidth: "400px",
-                lineHeight: "1.6",
-              }}
-            >
-              Transform your financial life with intelligent expense tracking,
-              banking integration, and AI-powered insights designed for UK
-              users.
+            <p>
+              The smarter way to track expenses, manage budgets, and stay on top of your
+              credit health. Built for the UK, designed for everyone.
             </p>
             <a
               href="https://apps.apple.com/us/app/expenzez/id6751338089"
               className="btn btn-primary"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
+              style={{ background: "#fff", color: "#481B91" }}
             >
-              <Download size={16} />
               Download for iOS
             </a>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4>Quick Links</h4>
+            <h4>Product</h4>
+            <ul className="footer-links">
+              <li><Link to="/">Overview</Link></li>
+              <li><Link to="/support">Support</Link></li>
+              <li>
+                <a
+                  href="https://apps.apple.com/us/app/expenzez/id6751338089"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  iOS app
+                </a>
+              </li>
+              <li><span style={{ opacity: 0.55 }}>Android · coming soon</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Company</h4>
             <ul className="footer-links">
               <li>
-                <Link to="/">Home</Link>
+                <span style={{ color: "rgba(232,218,251,0.78)" }}>
+                  Biszaal Tech Ltd.
+                </span>
               </li>
-              <li>
-                <Link to="/support">Support</Link>
+              <li style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
+                <MapPin size={14} style={{ color: "rgba(232,218,251,0.5)" }} />
+                <span>London, United Kingdom</span>
               </li>
-              <li>
-                <Link to="/privacy">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link to="/terms">Terms of Service</Link>
+              <li style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
+                <Mail size={14} style={{ color: "rgba(232,218,251,0.5)" }} />
+                <a href="mailto:support@expenzez.com">support@expenzez.com</a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4>Contact</h4>
+            <h4>Legal</h4>
             <ul className="footer-links">
-              <li
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-              >
-                <Mail size={16} style={{ color: "#9ca3af" }} />
-                <a href="mailto:support@expenzez.com">support@expenzez.com</a>
-              </li>
-              <li
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-              >
-                <MapPin size={16} style={{ color: "#9ca3af" }} />
-                <span style={{ color: "#d1d5db" }}>London, United Kingdom</span>
-              </li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+              <li><Link to="/account-deletion">Account deletion</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: "1rem",
-            }}
-          >
-            <p>© {new Date().getFullYear()} Expenzez. All rights reserved.</p>
-            <div style={{ display: "flex", gap: "1.5rem" }}>
-              <Link
-                to="/privacy"
-                style={{
-                  color: "#9ca3af",
-                  textDecoration: "none",
-                  fontSize: "0.875rem",
-                }}
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                style={{
-                  color: "#9ca3af",
-                  textDecoration: "none",
-                  fontSize: "0.875rem",
-                }}
-              >
-                Terms of Service
-              </Link>
+          <div className="row">
+            <p>© {year} Biszaal Tech Ltd. All rights reserved.</p>
+            <div style={{ display: "flex", gap: "1.25rem" }}>
+              <Link to="/privacy">Privacy</Link>
+              <Link to="/terms">Terms</Link>
+              <a href="mailto:privacy@expenzez.com">GDPR</a>
             </div>
           </div>
         </div>
