@@ -341,6 +341,11 @@ body {
   margin: 0 auto;
 }
 
+.screenshots-three {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 960px;
+}
+
 .screenshot-card {
   position: relative;
   background: var(--card);

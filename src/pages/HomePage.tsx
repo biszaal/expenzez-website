@@ -136,7 +136,7 @@ const HomePage: React.FC = () => {
             <span><CheckCircle2 size={14} /> UK GDPR compliant</span>
           </div>
 
-          <div className="screenshots">
+          <div className="screenshots screenshots-three">
             <div className="screenshot-card">
               <img src="/screenshot-1.png" alt="Expenzez dashboard" />
               <div className="caption">
@@ -149,6 +149,13 @@ const HomePage: React.FC = () => {
               <div className="caption">
                 <h3>Spending & budgets</h3>
                 <p>Categorised, charted, and trend-tracked</p>
+              </div>
+            </div>
+            <div className="screenshot-card">
+              <img src="/screenshot-3.png" alt="Expenzez AI financial assistant" />
+              <div className="caption">
+                <h3>AI assistant</h3>
+                <p>Ask anything about your finances</p>
               </div>
             </div>
           </div>
