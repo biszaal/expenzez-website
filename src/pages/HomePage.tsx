@@ -3,7 +3,6 @@ import {
   Shield,
   Brain,
   Sparkles,
-  Download,
   TrendingUp,
   PieChart,
   Target,
@@ -18,8 +17,9 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-const APP_STORE_URL =
-  "https://apps.apple.com/us/app/expenzez/id6751338089";
+import Seo from "../components/Seo";
+import StoreButtons from "../components/StoreButtons";
+import { AppSchema, OrganizationSchema } from "../components/StructuredData";
 
 const features = [
   {
@@ -96,6 +96,14 @@ const stats = [
 const HomePage: React.FC = () => {
   return (
     <div>
+      <Seo
+        title="Expenzez — AI-powered expense tracking for the UK"
+        description="Track spending, manage budgets, monitor credit health, and get instant AI insights. Free on iOS & Android, built for the UK."
+        path="/"
+      />
+      <AppSchema />
+      <OrganizationSchema />
+
       {/* Hero */}
       <section className="hero">
         <div className="container hero-content">
@@ -115,15 +123,7 @@ const HomePage: React.FC = () => {
           </p>
 
           <div className="button-group">
-            <a
-              href={APP_STORE_URL}
-              className="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Download size={16} />
-              Download for iOS
-            </a>
+            <StoreButtons location="hero" />
             <a href="#features" className="btn btn-secondary">
               Explore features
               <ArrowRight size={16} />
@@ -135,6 +135,10 @@ const HomePage: React.FC = () => {
             <span><Smartphone size={14} /> Face ID & PIN</span>
             <span><CheckCircle2 size={14} /> UK GDPR compliant</span>
           </div>
+
+          <p className="small" style={{ marginTop: "-1.5rem", marginBottom: "3rem", opacity: 0.8 }}>
+            Free to download · Premium unlocks more in-app.
+          </p>
 
           <div className="screenshots screenshots-three">
             <div className="screenshot-card">
@@ -261,16 +265,7 @@ const HomePage: React.FC = () => {
             </p>
 
             <div className="cta-buttons">
-              <a
-                href={APP_STORE_URL}
-                className="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download size={16} />
-                Download for iOS
-              </a>
-              <span className="coming-soon">Android coming soon</span>
+              <StoreButtons location="cta" />
             </div>
 
             <p className="small">
