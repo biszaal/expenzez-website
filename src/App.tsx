@@ -6,6 +6,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Support from './pages/Support';
 import AccountDeletion from './pages/AccountDeletion';
+import Download from './pages/Download';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/support" element={<Support />} />
             <Route path="/account-deletion" element={<AccountDeletion />} />
+            <Route path="/download" element={<Download />} />
           </Routes>
         </main>
         <Footer />
