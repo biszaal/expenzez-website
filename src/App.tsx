@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ConsentBanner from './components/ConsentBanner';
 import HomePage from './pages/HomePage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -25,6 +26,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ConsentBanner />
       </div>
     </Router>
   );
