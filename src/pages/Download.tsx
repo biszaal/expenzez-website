@@ -45,7 +45,9 @@ const Download: React.FC = () => {
             ? "Choose your platform to download the app."
             : "Redirecting you to the store…"}
         </p>
-        <StoreButtons location="download_page" />
+        <div className="button-group" style={{ justifyContent: "center", marginBottom: 0 }}>
+          <StoreButtons location="download_page" />
+        </div>
       </div>
     </section>
   );

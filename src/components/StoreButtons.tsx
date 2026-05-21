@@ -8,12 +8,17 @@ interface Props {
   variant?: "primary" | "light"; // light = on dark backgrounds
 }
 
+/**
+ * The two app-store action buttons (App Store + Google Play) with click
+ * tracking. Returns a fragment — wrap it in the layout container the surface
+ * needs (e.g. `.button-group` or `.cta-buttons`).
+ */
 const StoreButtons: React.FC<Props> = ({ location, variant = "primary" }) => {
   const lightStyle =
     variant === "light" ? { background: "#fff", color: "#481B91" } : undefined;
 
   return (
-    <div className="button-group">
+    <>
       <a
         href={storeUrl("ios")}
         className="btn btn-primary"
@@ -36,7 +41,7 @@ const StoreButtons: React.FC<Props> = ({ location, variant = "primary" }) => {
         <Play size={16} />
         Google Play
       </a>
-    </div>
+    </>
   );
 };
 
