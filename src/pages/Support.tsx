@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Mail, MessageSquare, ChevronDown, Sparkles } from "lucide-react";
+import { faqs } from "../data/faqs";
+import { FaqSchema } from "../components/StructuredData";
+import Seo from "../components/Seo";
 
 const Support: React.FC = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -17,55 +20,18 @@ const Support: React.FC = () => {
     window.location.href = `mailto:support@expenzez.com?subject=${mailSubject}&body=${mailBody}`;
   };
 
-  const faqs = [
-    {
-      question: "How does the AI financial assistant work?",
-      answer:
-        "The assistant analyses your spending, income, and goals to surface personalised insights. Ask anything in plain English — \"Where am I spending most this month?\", \"Can I afford this purchase?\" — and it answers using your actual data, not generic advice.",
-    },
-    {
-      question: "How do I add transactions?",
-      answer:
-        "Two ways: 1) Add manually for cash, one-offs, or quick entries. 2) Bulk-import a CSV (bank statement, credit card export, or another app). Expenzez auto-categorises everything and you can fine-tune at any time.",
-    },
-    {
-      question: "Can Expenzez help me save money?",
-      answer:
-        "Yes — it spots forgotten subscriptions, flags categories drifting over budget, suggests realistic budget adjustments, and benchmarks your spending against UK averages so you see exactly where to trim.",
-    },
-    {
-      question: "Does it track my credit score and credit cards?",
-      answer:
-        "Yes. Expenzez monitors your credit score over time, tracks balances and due dates across all your cards, and shows utilisation, payoff timelines, and total interest in one place.",
-    },
-    {
-      question: "Is my financial data secure?",
-      answer:
-        "Security is the top priority. All data is encrypted in transit and at rest. The app is protected with Face ID / Touch ID and an optional PIN. Your data is never sold, shared, or used to train third-party models.",
-    },
-    {
-      question: "How does CSV import work?",
-      answer:
-        "Open Add transaction → Import CSV → choose your file. Expenzez auto-detects the columns (date, amount, description) and imports everything in seconds. Categories are assigned by AI and you can edit them in bulk.",
-    },
-    {
-      question: "Will my data sync across devices?",
-      answer:
-        "Yes. Sign in on any new device and your transactions, budgets, goals, and insights restore automatically. You'll just need to re-enrol Face ID or your PIN on the new device for security.",
-    },
-    {
-      question: "When is Android coming?",
-      answer:
-        "Android is in active development. iOS is fully launched and we're shipping new features there continuously while the Android build catches up.",
-    },
-  ];
-
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
   return (
     <div className="support-page">
+      <Seo
+        title="Expenzez Support & FAQ — Help with the app"
+        description="Answers to common Expenzez questions: AI assistant, CSV import, budgets, credit tracking, security, and Android availability."
+        path="/support"
+      />
+      <FaqSchema />
       <div className="container">
         <div className="support-header">
           <h1>How can we help?</h1>
