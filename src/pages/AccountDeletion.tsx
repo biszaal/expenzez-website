@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, AlertTriangle, CheckCircle } from 'lucide-react';
+import Seo from '../components/Seo';
 
 const AccountDeletion: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -70,6 +71,11 @@ const AccountDeletion: React.FC = () => {
 
   return (
     <div className="support-page">
+      <Seo
+        title="Delete your Expenzez account"
+        description="How to permanently delete your Expenzez account and data."
+        path="/account-deletion"
+      />
       <div className="container">
         <div className="support-header">
           <h1>Account Deletion Request</h1>

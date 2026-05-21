@@ -1,8 +1,14 @@
 import React from 'react';
+import Seo from '../components/Seo';
 
 const TermsOfService: React.FC = () => {
   return (
     <div className="terms-page">
+      <Seo
+        title="Terms of Service — Expenzez"
+        description="The terms governing your use of the Expenzez app and website."
+        path="/terms"
+      />
       <div className="container">
         <div className="terms-content">
           <h1>Terms of Service</h1>

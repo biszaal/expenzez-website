@@ -1,8 +1,14 @@
 import React from 'react';
+import Seo from '../components/Seo';
 
 const PrivacyPolicy: React.FC = () => {
   return (
     <div className="privacy-page">
+      <Seo
+        title="Privacy Policy — Expenzez"
+        description="How Expenzez collects, uses, and protects your data. UK GDPR compliant."
+        path="/privacy"
+      />
       <div className="container">
         <div className="privacy-content">
           <h1>Privacy Policy</h1>
