@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="App min-h-screen bg-gray-50">
+      <div className="App min-h-screen" style={{ background: "var(--bg)", color: "var(--ink)" }}>
         <Navbar />
         <main className="flex-1">
           <Routes>

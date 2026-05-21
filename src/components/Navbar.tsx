@@ -1,106 +1,112 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Wallet } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { W, MAXW } from "../theme/tokens";
 
-const NAV_LINKS = [
-  { to: "/", label: "Home" },
-  { to: "/support", label: "Support" },
-  { to: "/privacy", label: "Privacy" },
-  { to: "/terms", label: "Terms" },
-];
+const LinksRow: React.FC<{ onNavigate?: () => void }> = ({ onNavigate }) => (
+  <>
+    {[
+      { label: "Features", href: "/#features" },
+      { label: "Pricing", href: "/#pricing" },
+      { label: "FAQ", href: "/#faq" },
+    ].map((l) => (
+      <a key={l.label} href={l.href} onClick={onNavigate} style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
+        {l.label}
+      </a>
+    ))}
+    <Link to="/support" onClick={onNavigate} style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
+      Support
+    </Link>
+  </>
+);
+
+const Logo: React.FC = () => (
+  <Link to="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+    <div
+      style={{
+        width: 32,
+        height: 32,
+        borderRadius: 9,
+        background: `linear-gradient(135deg, ${W.primary}, ${W.primaryDim})`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: `0 6px 18px ${W.primaryGlow}`,
+      }}
+    >
+      <svg width="18" height="18" viewBox="0 0 32 32">
+        <path d="M5 24 L13 14 L18 18 L27 8" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M22 8 L27 8 L27 13" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+    <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: -0.4, color: W.text }}>
+      expenzez<span style={{ color: W.lime }}>.</span>
+    </span>
+  </Link>
+);
+
+const ctaStyle: React.CSSProperties = {
+  padding: "9px 16px",
+  borderRadius: 11,
+  fontSize: 13.5,
+  fontWeight: 600,
+  background: W.text,
+  color: W.bg,
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+};
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-
-  const isActive = (path: string) => location.pathname === path;
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <Link to="/" className="nav-logo" onClick={() => setIsOpen(false)}>
-          <span className="nav-logo-mark">
-            <Wallet size={20} strokeWidth={2.25} />
-          </span>
-          Expenzez
-        </Link>
+    <nav
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        background: "rgba(7,5,12,0.7)",
+        borderBottom: `1px solid ${W.border}`,
+      }}
+    >
+      <div style={{ maxWidth: MAXW, margin: "0 auto", padding: "18px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Logo />
 
-        <div className="nav-links">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={isActive(link.to) ? "active" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/download" className="btn btn-primary">
+        <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <LinksRow />
+          <Link to="/download" style={ctaStyle}>
             Get the app
           </Link>
         </div>
 
-        <div className="mobile-menu-btn">
-          <button
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0.5rem",
-              borderRadius: "12px",
-              color: "#1A1430",
-              border: "1px solid rgba(40,20,80,0.08)",
-              background: "rgba(255,255,255,0.7)",
-              cursor: "pointer",
-            }}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div
+        <button
+          className="nav-burger"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
           style={{
-            background: "rgba(250,248,255,0.98)",
-            backdropFilter: "blur(14px)",
-            borderTop: "1px solid rgba(40,20,80,0.05)",
-            padding: "1rem 1.25rem 1.25rem",
+            display: "none",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 8,
+            borderRadius: 10,
+            color: W.text,
+            border: `1px solid ${W.borderHi}`,
+            background: W.card,
+            cursor: "pointer",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setIsOpen(false)}
-                style={{
-                  display: "block",
-                  padding: "0.85rem 1rem",
-                  textDecoration: "none",
-                  color: isActive(link.to) ? "#7B3FE4" : "#1A1430",
-                  fontWeight: 500,
-                  borderRadius: "12px",
-                  background: isActive(link.to) ? "rgba(123,63,228,0.08)" : "transparent",
-                  transition: "all 0.2s",
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              to="/download"
-              className="btn btn-primary"
-              style={{
-                textDecoration: "none",
-                marginTop: "0.85rem",
-                textAlign: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => setIsOpen(false)}
-            >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="nav-mobile" style={{ borderTop: `1px solid ${W.border}`, background: "rgba(7,5,12,0.96)", padding: "12px 24px 20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14, paddingTop: 8 }}>
+            <LinksRow onNavigate={close} />
+            <Link to="/download" onClick={close} style={{ ...ctaStyle, textAlign: "center", marginTop: 6 }}>
               Get the app
             </Link>
           </div>

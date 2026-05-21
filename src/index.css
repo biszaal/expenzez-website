@@ -8,39 +8,41 @@
    ============================================================ */
 
 :root {
+  /* Dark fintech theme — electric purple (#9D5BFF) + lime (#C5F25C) on warm black */
   --purple-50: #F5EFFD;
   --purple-100: #E8DAFB;
   --purple-200: #D6BBF7;
-  --purple-300: #B58BF0;
-  --purple-400: #9461E9;
-  --purple-500: #7B3FE4;
-  --purple-600: #5B23B8;
-  --purple-700: #481B91;
-  --purple-800: #36156D;
-  --purple-900: #270F50;
-  --purple-glow: rgba(123, 63, 228, 0.24);
+  --purple-300: #C29CFF;
+  --purple-400: #B07DFF;
+  --purple-500: #9D5BFF;
+  --purple-600: #8341E6;
+  --purple-700: #6B2EB8;
+  --purple-800: #4E2090;
+  --purple-900: #2E1359;
+  --purple-glow: rgba(157, 91, 255, 0.35);
 
-  --lime-100: #E2F1C3;
-  --lime-500: #5C8519;
-  --lime-600: #496B14;
-  --lime-700: #3F5B12;
+  --lime-100: #EAF7C9;
+  --lime-500: #C5F25C;
+  --lime-600: #B6E84A;
+  --lime-700: #A7DA38;
 
-  --cyan-500: #2D7DB8;
-  --cyan-600: #256594;
+  --cyan-500: #5BC8FF;
+  --cyan-600: #3FB0EE;
 
-  --bg: #FAF8FF;
-  --bg-soft: #F3EFFB;
-  --bg-tint: #F7F4FE;
-  --card: #FFFFFF;
-  --night: #0A0712;
-  --night-soft: #100B1B;
+  --bg: #07050C;
+  --bg-soft: #0F0A1A;
+  --bg-tint: #161122;
+  --card: #161122;
+  --card-hi: #1B1428;
+  --night: #07050C;
+  --night-soft: #0F0A1A;
   --night-card: #161122;
 
-  --ink: #1A1430;
-  --ink-soft: rgba(26, 20, 48, 0.62);
-  --ink-muted: rgba(26, 20, 48, 0.42);
-  --line: rgba(40, 20, 80, 0.08);
-  --line-soft: rgba(40, 20, 80, 0.05);
+  --ink: #F4F1FA;
+  --ink-soft: rgba(244, 241, 250, 0.62);
+  --ink-muted: rgba(244, 241, 250, 0.40);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-soft: rgba(255, 255, 255, 0.05);
 
   --radius-sm: 12px;
   --radius-md: 16px;
@@ -49,10 +51,10 @@
   --radius-2xl: 32px;
   --radius-pill: 9999px;
 
-  --shadow-soft: 0 4px 16px -4px rgba(40, 20, 80, 0.08);
-  --shadow-card: 0 12px 32px -10px rgba(40, 20, 80, 0.12);
-  --shadow-glow: 0 12px 32px -8px var(--purple-glow);
-  --shadow-glow-strong: 0 24px 48px -12px rgba(123, 63, 228, 0.40);
+  --shadow-soft: 0 4px 20px -6px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 14px 34px -10px var(--purple-glow);
+  --shadow-glow-strong: 0 24px 54px -12px rgba(157, 91, 255, 0.45);
 }
 
 @layer utilities {
@@ -1123,7 +1125,72 @@ body {
   margin-top: 2rem;
 }
 
+.terms-notice-box {
+  background: rgba(245, 179, 66, 0.10);
+  border: 1px solid rgba(245, 179, 66, 0.28);
+}
+
 .terms-notice-box p {
-  color: #7A4F12;
+  color: #F3D9A0;
   margin: 0;
+}
+
+/* ============================================================
+   Dark theme adjustments (subpages reuse the shared classes)
+   ============================================================ */
+.btn-secondary:hover {
+  border-color: var(--purple-400);
+  color: var(--purple-300);
+}
+
+.support-page::before,
+.privacy-page::before,
+.terms-page::before {
+  background: radial-gradient(circle at 50% 0%, rgba(157, 91, 255, 0.16), transparent 70%);
+}
+
+.faq-question:hover {
+  background: rgba(157, 91, 255, 0.07);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   Dark marketing homepage — responsive layout
+   (sections use inline styles; these adapt them to small screens)
+   ============================================================ */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; row-gap: 40px !important; }
+}
+
+@media (max-width: 860px) {
+  .nav-desktop { display: none !important; }
+  .nav-burger { display: inline-flex !important; }
+
+  .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding: 56px 22px 64px !important; }
+  .bento-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
+  .bento-grid > * { grid-column: auto !important; grid-row: auto !important; }
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; row-gap: 36px !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* Scale down oversized display type + side padding */
+  .home h1 { font-size: 46px !important; letter-spacing: -1.6px !important; }
+  .home h2 { font-size: 34px !important; letter-spacing: -1px !important; }
+  .home section { padding-left: 22px !important; padding-right: 22px !important; }
+}
+
+@media (max-width: 480px) {
+  .home h1 { font-size: 40px !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
 }

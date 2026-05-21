@@ -27,16 +27,17 @@ const ConsentBanner: React.FC = () => {
         zIndex: 1000,
         maxWidth: 520,
         margin: "0 auto",
-        background: "#fff",
-        border: "1px solid rgba(40,20,80,0.10)",
+        background: "rgba(22,17,34,0.98)",
+        border: "1px solid rgba(255,255,255,0.10)",
         borderRadius: 16,
-        boxShadow: "0 18px 48px -12px rgba(40,20,80,0.28)",
+        boxShadow: "0 18px 48px -12px rgba(0,0,0,0.6)",
+        backdropFilter: "blur(16px)",
         padding: "1rem 1.25rem",
       }}
     >
-      <p style={{ margin: 0, fontSize: "0.9rem", color: "#1A1430" }}>
+      <p style={{ margin: 0, fontSize: "0.9rem", color: "#F4F1FA" }}>
         We use privacy-respecting analytics to improve Expenzez. See our{" "}
-        <Link to="/privacy" style={{ color: "#7B3FE4" }}>
+        <Link to="/privacy" style={{ color: "#C29CFF" }}>
           Privacy Policy
         </Link>
         .
