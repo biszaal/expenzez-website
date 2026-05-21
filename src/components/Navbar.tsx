@@ -35,14 +35,9 @@ const Navbar: React.FC = () => {
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://apps.apple.com/us/app/expenzez/id6751338089"
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/download" className="btn btn-primary">
             Get the app
-          </a>
+          </Link>
         </div>
 
         <div className="mobile-menu-btn">
@@ -95,11 +90,9 @@ const Navbar: React.FC = () => {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="https://apps.apple.com/us/app/expenzez/id6751338089"
+            <Link
+              to="/download"
               className="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
               style={{
                 textDecoration: "none",
                 marginTop: "0.85rem",
@@ -109,7 +102,7 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(false)}
             >
               Get the app
-            </a>
+            </Link>
           </div>
         </div>
       )}
