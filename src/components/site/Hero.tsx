@@ -1,38 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Lock, Smartphone, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Lock, Smartphone, CheckCircle2, Sparkles, Apple, Play, Unlink } from "lucide-react";
 import { W, MAXW } from "../../theme/tokens";
+import { storeUrl } from "../../config/links";
+import { trackDownload } from "../../lib/analytics";
 import Pill from "./Pill";
 import HeroPhone from "./HeroPhone";
+import HeroBackground from "./HeroBackground";
 
 const Hero: React.FC = () => (
   <section style={{ position: "relative", overflow: "hidden" }}>
-    {/* Ambient glow */}
-    <div
-      style={{
-        position: "absolute",
-        top: -200,
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: 1000,
-        height: 600,
-        background: "radial-gradient(ellipse, rgba(157,91,255,0.25), transparent 60%)",
-        pointerEvents: "none",
-      }}
-    />
-    <div
-      style={{
-        position: "absolute",
-        top: 100,
-        right: -200,
-        width: 600,
-        height: 600,
-        background: "radial-gradient(circle, rgba(197,242,92,0.10), transparent 65%)",
-        pointerEvents: "none",
-      }}
-    />
+    <HeroBackground />
 
-    <div className="hero-grid" style={{ maxWidth: MAXW, margin: "0 auto", padding: "88px 32px 80px", position: "relative" }}>
+    <div className="hero-grid" style={{ maxWidth: MAXW, margin: "0 auto", padding: "88px 32px 80px", position: "relative", zIndex: 2 }}>
       <div>
         <Pill accent>● NOW ON iOS &amp; ANDROID</Pill>
         <h1 style={{ fontSize: 76, fontWeight: 600, letterSpacing: -3, lineHeight: 0.98, margin: "24px 0 0", color: W.text }}>
@@ -54,13 +33,17 @@ const Hero: React.FC = () => (
           makes sense.
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.55, color: W.dim, maxWidth: 480, marginTop: 28 }}>
-          Track spending, budget effortlessly, and get instant AI insights — all in one beautiful app. Built for the UK, designed for everyone.
+          No bank login required. Upload your bank statement and get instant AI-powered insights in seconds. Private by design.
         </p>
-        <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
-          <Link
-            to="/download"
+        <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap", alignItems: "center" }}>
+          <a
+            href={storeUrl("ios")}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackDownload("ios", "hero")}
+            className="btn-press btn-glow"
             style={{
-              padding: "15px 26px",
+              padding: "15px 24px",
               borderRadius: 14,
               textDecoration: "none",
               background: `linear-gradient(135deg, ${W.primary}, ${W.primaryDim})`,
@@ -70,14 +53,18 @@ const Hero: React.FC = () => (
               boxShadow: `0 16px 36px ${W.primaryGlow}`,
               display: "inline-flex",
               alignItems: "center",
-              gap: 8,
+              gap: 9,
             }}
           >
-            Download — it's free
-            <ArrowRight size={15} />
-          </Link>
+            <Apple size={17} />
+            Download on iOS
+          </a>
           <a
-            href="#features"
+            href={storeUrl("android")}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackDownload("android", "hero")}
+            className="btn-press"
             style={{
               padding: "15px 24px",
               borderRadius: 14,
@@ -89,11 +76,26 @@ const Hero: React.FC = () => (
               fontSize: 15,
               display: "inline-flex",
               alignItems: "center",
-              gap: 8,
+              gap: 9,
+            }}
+          >
+            <Play size={16} />
+            Get it on Android
+          </a>
+          <a
+            href="#features"
+            style={{
+              textDecoration: "none",
+              color: W.dim,
+              fontWeight: 600,
+              fontSize: 14,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
             }}
           >
             Explore features
-            <ArrowRight size={15} />
+            <ArrowRight size={14} />
           </a>
         </div>
 
@@ -108,13 +110,19 @@ const Hero: React.FC = () => (
           <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
             <CheckCircle2 size={14} /> Free — no card needed
           </span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
+            <Unlink size={14} /> No bank login ever required
+          </span>
         </div>
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
-        <HeroPhone />
+        <div className="floaty">
+          <HeroPhone />
+        </div>
         {/* Floating AI insight card — no bank/sync claim */}
         <div
+          className="floaty-card"
           style={{
             position: "absolute",
             top: -28,

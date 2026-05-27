@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import { W, MAXW } from "../../theme/tokens";
 import Pill from "./Pill";
+import Reveal from "./Reveal";
 
 const freeFeatures = [
   "Track unlimited transactions",
@@ -24,15 +25,16 @@ const proFeatures = [
 const Pricing: React.FC = () => (
   <section id="pricing" style={{ padding: "40px 32px 120px" }}>
     <div style={{ maxWidth: MAXW, margin: "0 auto" }}>
-      <div style={{ textAlign: "center", marginBottom: 64 }}>
+      <Reveal style={{ textAlign: "center", marginBottom: 64 }}>
         <Pill>SIMPLE PRICING</Pill>
         <h2 style={{ fontSize: 56, fontWeight: 600, letterSpacing: -2, lineHeight: 1.05, marginTop: 18, color: W.text }}>
           Free forever. Pro when you need it.
         </h2>
-      </div>
+      </Reveal>
       <div className="pricing-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 880, margin: "0 auto" }}>
         {/* Free */}
-        <div style={{ padding: 32, borderRadius: 24, background: W.card, border: `1px solid ${W.border}` }}>
+        <Reveal style={{ display: "flex" }}>
+        <div className="lift" style={{ padding: 32, borderRadius: 24, background: W.card, border: `1px solid ${W.border}`, width: "100%" }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: W.dim }}>Free</div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginTop: 10 }}>
             <span style={{ fontFamily: W.mono, fontSize: 56, fontWeight: 500, letterSpacing: -2.4, color: W.text }}>£0</span>
@@ -49,6 +51,7 @@ const Pricing: React.FC = () => (
           </div>
           <Link
             to="/download"
+            className="btn-press"
             style={{
               display: "block",
               textAlign: "center",
@@ -66,9 +69,12 @@ const Pricing: React.FC = () => (
             Get started — free
           </Link>
         </div>
+        </Reveal>
 
         {/* Pro */}
+        <Reveal delay={120} style={{ display: "flex" }}>
         <div
+          className="lift"
           style={{
             padding: 32,
             borderRadius: 24,
@@ -78,6 +84,7 @@ const Pricing: React.FC = () => (
             color: "#fff",
             boxShadow: `0 24px 60px ${W.primaryGlow}`,
             overflow: "hidden",
+            width: "100%",
           }}
         >
           <div style={{ position: "absolute", top: -80, right: -80, width: 280, height: 280, background: "radial-gradient(circle, rgba(197,242,92,0.3), transparent 65%)", pointerEvents: "none" }} />
@@ -101,6 +108,7 @@ const Pricing: React.FC = () => (
             </div>
             <Link
               to="/download"
+              className="btn-press"
               style={{
                 display: "block",
                 textAlign: "center",
@@ -119,6 +127,7 @@ const Pricing: React.FC = () => (
             <div style={{ textAlign: "center", fontSize: 11, opacity: 0.75, marginTop: 10 }}>Cancel anytime</div>
           </div>
         </div>
+        </Reveal>
       </div>
     </div>
   </section>

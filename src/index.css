@@ -1180,6 +1180,7 @@ body {
   .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding: 56px 22px 64px !important; }
   .bento-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
   .bento-grid > * { grid-column: auto !important; grid-row: auto !important; }
+  .import-grid { grid-template-columns: 1fr !important; }
   .pricing-grid { grid-template-columns: 1fr !important; }
   .stats-grid { grid-template-columns: 1fr 1fr !important; row-gap: 36px !important; }
   .footer-grid { grid-template-columns: 1fr 1fr !important; }
@@ -1193,4 +1194,193 @@ body {
 @media (max-width: 480px) {
   .home h1 { font-size: 40px !important; }
   .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ============================================================
+   Motion system — scroll reveals, hover lift, perpetual micro-motion.
+   Reveal uses `translate`/`opacity`; `.lift` owns `transform`, so the two
+   never clobber each other's transition. transform/opacity only (GPU).
+   ============================================================ */
+
+/* Shared transition for reveal + hover-lift surfaces */
+.reveal,
+.lift {
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Scroll-into-view reveal (JS toggles .is-visible; <noscript> shows all) */
+.reveal { opacity: 0; translate: 0 22px; }
+.reveal.is-visible { opacity: 1; translate: 0 0; }
+
+/* Hover lift for cards/tiles */
+.lift:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Tactile buttons */
+.btn-press { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, filter 0.3s ease; }
+.btn-press:hover { transform: translateY(-2px); }
+.btn-press:active { transform: translateY(0) scale(0.97); }
+.btn-glow:hover { filter: brightness(1.05); box-shadow: 0 20px 46px rgba(157, 91, 255, 0.5); }
+
+/* Screenshot zoom inside a clipped frame */
+.shot-zoom img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.shot-zoom:hover img { transform: scale(1.05); }
+
+/* Nav links: animated underline + brighten */
+.nav-link { position: relative; transition: color 0.25s ease; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover { color: #f4f1fa; }
+.nav-link:hover::after { scale: 1 1; }
+
+/* Hero load-in stagger (CSS animation runs without JS, ends visible) */
+@keyframes heroFade { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.hero-fade { opacity: 0; animation: heroFade 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Perpetual micro-motion */
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes floatyCard { 0%, 100% { transform: rotate(4deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-10px); } }
+@keyframes glowBreath { 0%, 100% { opacity: 0.65; } 50% { opacity: 1; } }
+.floaty { animation: floaty 6s ease-in-out infinite; }
+.floaty-card { animation: floatyCard 5s ease-in-out infinite; }
+.glow-breath { animation: glowBreath 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; translate: none !important; transition: none !important; }
+  .hero-fade { opacity: 1 !important; animation: none !important; }
+  .floaty, .floaty-card, .glow-breath { animation: none !important; }
+  .lift:hover { transform: none !important; }
+  .shot-zoom:hover img { transform: none !important; }
+}
+
+/* ============================================================
+   Hero animated background — drifting mesh blobs + a transaction
+   ticker + film grain. Pure CSS, loops forever, hero section only.
+   Layers sit behind hero content (which uses z-index: 2).
+   ============================================================ */
+.hero-bg,
+.ticker-layer,
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Layer 1 — drifting mesh blobs */
+.hero-bg .blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+  opacity: 0.55;
+}
+.hero-bg .blob-1 {
+  width: 600px; height: 600px; top: -180px; left: -120px;
+  background: radial-gradient(circle, #9d5bff, transparent 65%);
+  animation: drift1 22s ease-in-out infinite;
+}
+.hero-bg .blob-2 {
+  width: 500px; height: 500px; top: 120px; right: -100px;
+  background: radial-gradient(circle, #6b2eb8, transparent 65%);
+  animation: drift2 28s ease-in-out infinite;
+}
+.hero-bg .blob-3 {
+  width: 400px; height: 400px; bottom: -120px; left: 30%;
+  background: radial-gradient(circle, rgba(197, 242, 92, 0.6), transparent 65%);
+  animation: drift3 32s ease-in-out infinite;
+  opacity: 0.35;
+}
+.hero-bg .blob-4 {
+  width: 350px; height: 350px; top: 40%; left: 40%;
+  background: radial-gradient(circle, #5bc8ff, transparent 65%);
+  animation: drift4 26s ease-in-out infinite;
+  opacity: 0.25;
+}
+
+@keyframes drift1 { 0%, 100% { transform: translate(0, 0) scale(1); }   50% { transform: translate(80px, 60px) scale(1.1); } }
+@keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1); }   50% { transform: translate(-90px, 50px) scale(0.95); } }
+@keyframes drift3 { 0%, 100% { transform: translate(0, 0) scale(1); }   50% { transform: translate(60px, -80px) scale(1.15); } }
+@keyframes drift4 { 0%, 100% { transform: translate(0, 0); }            50% { transform: translate(-70px, -50px); } }
+
+/* Layer 2 — transaction ticker. Masked so chips only live in the open space
+   to the right of the (left-aligned) hero copy — they must never sit over the
+   headline, pill, CTAs or trust text. */
+.ticker-layer {
+  opacity: 0.32;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 54%, #000 66%, #000 95%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, transparent 54%, #000 66%, #000 95%, transparent 100%);
+}
+.ticker-row {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 16px;
+  white-space: nowrap;
+  will-change: transform;
+  animation: tickerL linear infinite;
+}
+.ticker-row.ticker-reverse { animation-name: tickerR; }
+@keyframes tickerL { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes tickerR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.ticker-row .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  background: rgba(22, 17, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 12px;
+  color: rgba(244, 241, 250, 0.62);
+  font-weight: 500;
+}
+.ticker-row .chip i { width: 6px; height: 6px; border-radius: 3px; display: inline-block; }
+.ticker-row .chip b { font-family: "Geist Mono", ui-monospace, monospace; font-weight: 600; color: #f4f1fa; }
+
+/* Layer 3 — film grain */
+.hero-noise {
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Trim cost on small screens (Safari/older iPhones) */
+@media (max-width: 768px) {
+  .hero-bg .blob-3,
+  .hero-bg .blob-4,
+  .hero-noise { display: none; }
+}
+
+/* The hero stacks to one column at 860px — no safe right-hand gap remains for
+   the ticker, so hide it rather than risk overlapping the copy. */
+@media (max-width: 860px) {
+  .ticker-layer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg .blob,
+  .ticker-row { animation: none !important; }
 }

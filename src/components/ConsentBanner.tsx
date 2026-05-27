@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getConsent, grantConsent, denyConsent } from "../lib/analytics";
 
 const ConsentBanner: React.FC = () => {
-  const [decided, setDecided] = useState(() => getConsent() !== null);
+  // Start "undecided" so the first client render matches the prerendered HTML
+  // (which always shows the banner). Then hide it for visitors who already chose
+  // — avoids a hydration mismatch for returning users.
+  const [decided, setDecided] = useState(false);
+  useEffect(() => {
+    if (getConsent() !== null) setDecided(true);
+  }, []);
   if (decided) return null;
 
   const accept = () => {

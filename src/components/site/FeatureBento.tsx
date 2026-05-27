@@ -2,8 +2,10 @@ import React from "react";
 import { Sparkles, FileSpreadsheet, Target, TrendingUp, RefreshCw, BarChart3 } from "lucide-react";
 import { W, MAXW } from "../../theme/tokens";
 import Pill from "./Pill";
+import Reveal from "./Reveal";
 
 const tileBase: React.CSSProperties = {
+  gridColumn: "span 2",
   padding: 28,
   borderRadius: 24,
   background: W.card,
@@ -24,19 +26,20 @@ const iconWrap = (bg: string, color: string): React.CSSProperties => ({
 const FeatureBento: React.FC = () => (
   <section id="features" style={{ padding: "120px 32px", position: "relative" }}>
     <div style={{ maxWidth: MAXW, margin: "0 auto" }}>
-      <div style={{ textAlign: "center", marginBottom: 64 }}>
+      <Reveal style={{ textAlign: "center", marginBottom: 64 }}>
         <Pill>EVERYTHING IN ONE APP</Pill>
         <h2 style={{ fontSize: 56, fontWeight: 600, letterSpacing: -2, lineHeight: 1.05, marginTop: 18, color: W.text }}>
           Smarter than a spreadsheet.
           <br />
           <span style={{ color: W.faint }}>Friendlier than your bank.</span>
         </h2>
-      </div>
+      </Reveal>
 
+      <Reveal>
       <div className="bento-grid" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 16, gridAutoRows: "minmax(220px, auto)" }}>
         {/* Big AI tile */}
         <div
-          className="bento-ai"
+          className="bento-ai lift"
           style={{
             gridColumn: "span 4",
             gridRow: "span 2",
@@ -72,18 +75,18 @@ const FeatureBento: React.FC = () => (
         </div>
 
         {/* Manual entry & CSV import (replaces auto bank-connect) */}
-        <div style={tileBase}>
+        <div className="lift" style={tileBase}>
           <div style={iconWrap("rgba(91,200,255,0.16)", W.cyan)}>
             <FileSpreadsheet size={22} />
           </div>
-          <div style={{ fontSize: 18, fontWeight: 600, marginTop: 18, color: W.text, letterSpacing: -0.3 }}>Manual entry &amp; CSV import</div>
+          <div style={{ fontSize: 18, fontWeight: 600, marginTop: 18, color: W.text, letterSpacing: -0.3 }}>PDF, CSV &amp; manual import</div>
           <p style={{ fontSize: 13, color: W.dim, lineHeight: 1.55, marginTop: 8 }}>
-            Add cash in a tap, or import a bank statement CSV. AI categorises every transaction automatically.
+            Upload a statement PDF, import a CSV, or add cash in a tap. AI categorises every transaction automatically.
           </p>
         </div>
 
         {/* Budgets */}
-        <div style={tileBase}>
+        <div className="lift" style={tileBase}>
           <div style={iconWrap("rgba(197,242,92,0.14)", W.lime)}>
             <Target size={22} />
           </div>
@@ -94,7 +97,7 @@ const FeatureBento: React.FC = () => (
         </div>
 
         {/* Credit health */}
-        <div style={tileBase}>
+        <div className="lift" style={tileBase}>
           <div style={iconWrap("rgba(255,107,138,0.14)", W.rose)}>
             <TrendingUp size={22} />
           </div>
@@ -109,7 +112,7 @@ const FeatureBento: React.FC = () => (
         </div>
 
         {/* Subscriptions — flag recurring charges from your transactions (no bank auto-cancel) */}
-        <div style={tileBase}>
+        <div className="lift" style={tileBase}>
           <div style={iconWrap("rgba(157,91,255,0.18)", "#C29CFF")}>
             <RefreshCw size={22} />
           </div>
@@ -120,7 +123,7 @@ const FeatureBento: React.FC = () => (
         </div>
 
         {/* Cost-of-living comparison (replaces receipt scanning) */}
-        <div style={tileBase}>
+        <div className="lift" style={tileBase}>
           <div style={iconWrap("rgba(245,179,66,0.16)", "#F5C77A")}>
             <BarChart3 size={22} />
           </div>
@@ -130,6 +133,7 @@ const FeatureBento: React.FC = () => (
           </p>
         </div>
       </div>
+      </Reveal>
     </div>
   </section>
 );

@@ -9,7 +9,7 @@ interface SeoProps {
   noindex?: boolean;
 }
 
-const DEFAULT_IMAGE = `${SITE_URL}/logo512.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-preview.png`;
 
 /**
  * Per-page document metadata. Relies on React 19 native hoisting of

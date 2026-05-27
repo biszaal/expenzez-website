@@ -3,6 +3,7 @@ import { Apple, Play } from "lucide-react";
 import { W } from "../../theme/tokens";
 import { storeUrl } from "../../config/links";
 import { trackDownload } from "../../lib/analytics";
+import Reveal from "./Reveal";
 
 const BigCTA: React.FC = () => (
   <section style={{ padding: "40px 32px 120px" }}>
@@ -31,7 +32,7 @@ const BigCTA: React.FC = () => (
           pointerEvents: "none",
         }}
       />
-      <div style={{ position: "relative" }}>
+      <Reveal style={{ position: "relative" }}>
         <h2 style={{ fontSize: 64, fontWeight: 600, letterSpacing: -2.4, lineHeight: 1, color: "#fff", margin: 0 }}>
           Take control today.
         </h2>
@@ -44,6 +45,7 @@ const BigCTA: React.FC = () => (
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackDownload("ios", "big_cta")}
+            className="btn-press"
             style={{ padding: "15px 26px", borderRadius: 14, textDecoration: "none", background: W.lime, color: W.bg, fontWeight: 700, fontSize: 15, display: "inline-flex", alignItems: "center", gap: 8 }}
           >
             <Apple size={16} />
@@ -54,13 +56,14 @@ const BigCTA: React.FC = () => (
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackDownload("android", "big_cta")}
+            className="btn-press"
             style={{ padding: "15px 26px", borderRadius: 14, textDecoration: "none", background: "rgba(255,255,255,0.12)", color: "#fff", fontWeight: 600, fontSize: 15, border: "1px solid rgba(255,255,255,0.2)", display: "inline-flex", alignItems: "center", gap: 8 }}
           >
             <Play size={16} />
             Get it on Android
           </a>
         </div>
-      </div>
+      </Reveal>
     </div>
   </section>
 );

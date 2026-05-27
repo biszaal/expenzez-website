@@ -16,6 +16,9 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "postbuild": "node scripts/prerender.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "og": "node scripts/generate-og.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
@@ -25,6 +28,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
+    "puppeteer": "^24.43.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.3",
     "vite": "^6.4.2",

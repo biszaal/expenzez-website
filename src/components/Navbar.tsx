@@ -10,11 +10,11 @@ const LinksRow: React.FC<{ onNavigate?: () => void }> = ({ onNavigate }) => (
       { label: "Pricing", href: "/#pricing" },
       { label: "FAQ", href: "/#faq" },
     ].map((l) => (
-      <a key={l.label} href={l.href} onClick={onNavigate} style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
+      <a key={l.label} href={l.href} onClick={onNavigate} className="nav-link" style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
         {l.label}
       </a>
     ))}
-    <Link to="/support" onClick={onNavigate} style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
+    <Link to="/support" onClick={onNavigate} className="nav-link" style={{ fontSize: 14, color: W.dim, textDecoration: "none", fontWeight: 500 }}>
       Support
     </Link>
   </>
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
 
         <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 32 }}>
           <LinksRow />
-          <Link to="/download" style={ctaStyle}>
+          <Link to="/download" className="btn-press" style={ctaStyle}>
             Get the app
           </Link>
         </div>
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
         <div className="nav-mobile" style={{ borderTop: `1px solid ${W.border}`, background: "rgba(7,5,12,0.96)", padding: "12px 24px 20px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 14, paddingTop: 8 }}>
             <LinksRow onNavigate={close} />
-            <Link to="/download" onClick={close} style={{ ...ctaStyle, textAlign: "center", marginTop: 6 }}>
+            <Link to="/download" onClick={close} className="btn-press" style={{ ...ctaStyle, textAlign: "center", marginTop: 6 }}>
               Get the app
             </Link>
           </div>

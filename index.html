@@ -8,7 +8,7 @@
     <meta
       data-static-seo
       name="description"
-      content="Expenzez — AI-powered expense tracking, smart budgets, credit health, and instant insights. Built for the UK, designed for everyone."
+      content="No bank connection needed. Upload your UK bank statement and get instant AI spending insights, smart budgets, and credit tracking — free on iOS & Android."
     />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
@@ -25,24 +25,32 @@
     <!-- Open Graph (static fallback for no-JS / social crawlers; React replaces per-page) -->
     <meta data-static-seo property="og:type" content="website" />
     <meta data-static-seo property="og:site_name" content="Expenzez" />
-    <meta data-static-seo property="og:title" content="Expenzez — AI-powered expense tracking" />
-    <meta data-static-seo property="og:description" content="Track spending, manage budgets, monitor credit, and get instant AI insights. Built for the UK." />
+    <meta data-static-seo property="og:title" content="Expenzez — AI money insights, no bank login required" />
+    <meta data-static-seo property="og:description" content="Upload your UK bank statement (PDF or CSV) and get instant AI spending insights, smart budgets, and credit tracking. Private by design — free on iOS & Android." />
     <meta data-static-seo property="og:url" content="https://expenzez.com/" />
-    <meta data-static-seo property="og:image" content="https://expenzez.com/logo512.png" />
-    <meta data-static-seo property="og:image:width" content="512" />
-    <meta data-static-seo property="og:image:height" content="512" />
+    <meta data-static-seo property="og:image" content="https://expenzez.com/og-preview.png" />
+    <meta data-static-seo property="og:image:width" content="1200" />
+    <meta data-static-seo property="og:image:height" content="630" />
     <meta data-static-seo property="og:locale" content="en_GB" />
 
     <!-- Twitter Card -->
     <meta data-static-seo name="twitter:card" content="summary_large_image" />
-    <meta data-static-seo name="twitter:title" content="Expenzez — AI-powered expense tracking" />
-    <meta data-static-seo name="twitter:description" content="Track spending, manage budgets, monitor credit, and get instant AI insights. Built for the UK." />
-    <meta data-static-seo name="twitter:image" content="https://expenzez.com/logo512.png" />
+    <meta data-static-seo name="twitter:title" content="Expenzez — AI money insights, no bank login required" />
+    <meta data-static-seo name="twitter:description" content="Upload your UK bank statement (PDF or CSV) and get instant AI spending insights, smart budgets, and credit tracking. Private by design — free on iOS & Android." />
+    <meta data-static-seo name="twitter:image" content="https://expenzez.com/og-preview.png" />
 
-    <title>Expenzez — AI-powered expense tracking</title>
+    <title data-static-seo>Expenzez — AI money insights, no bank login required</title>
+
+    <!-- Pages are prerendered, so they work without JS. Keep scroll-reveal and
+         entrance elements visible when JS (and thus the reveal observer) is off. -->
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; translate: none !important; }
+        .hero-fade { opacity: 1 !important; animation: none !important; }
+      </style>
+    </noscript>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
