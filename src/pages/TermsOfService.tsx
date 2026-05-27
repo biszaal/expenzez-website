@@ -19,7 +19,9 @@ const TermsOfService: React.FC = () => {
           <section>
             <h2>1. Agreement to Terms</h2>
             <p>
-              By accessing and using Expenzez ("the App", "our Service"), you agree to be bound by these
+              Expenzez ("the App", "our Service") is operated by Biszaal Tech Ltd, a company registered in
+              England and Wales (company number 16693100), whose registered office is at 71-75 Shelton
+              Street, London, WC2H 9JQ. By accessing and using Expenzez, you agree to be bound by these
               Terms of Service ("Terms"). If you do not agree to these Terms, do not use our Service.
             </p>
           </section>
@@ -27,15 +29,19 @@ const TermsOfService: React.FC = () => {
           <section>
             <h2>2. Description of Service</h2>
             <p>
-              Expenzez is a financial management application that provides:
+              Expenzez is a personal expense-tracking application that provides:
             </p>
             <ul>
-              <li>Banking integration and account management</li>
-              <li>Transaction tracking and categorization</li>
-              <li>AI-powered financial insights and recommendations</li>
+              <li>Manual and CSV-based tracking of your expenses and income</li>
+              <li>Transaction categorisation</li>
+              <li>AI-powered insights and recommendations (for information only)</li>
               <li>Budgeting and expense monitoring tools</li>
-              <li>Push notifications for financial activities</li>
+              <li>Push notifications relating to your activity in the app</li>
             </ul>
+            <p>
+              Expenzez does not connect to your bank, does not access your bank accounts, and never moves
+              money. It is not a bank, payment service, or regulated financial adviser.
+            </p>
           </section>
 
           <section>
@@ -98,7 +104,27 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>8. Privacy and Data Protection</h2>
+            <h2>8. Subscriptions and Payments</h2>
+            <p>
+              Expenzez offers an optional paid subscription ("Expenzez Pro"). Subscriptions are purchased
+              and billed through the Apple App Store or Google Play, not directly by us. The current price
+              is shown in the app before you purchase.
+            </p>
+            <ul>
+              <li>Subscriptions renew automatically at the end of each billing period unless cancelled.</li>
+              <li>You can manage or cancel your subscription at any time in your Apple or Google account settings; cancellation takes effect at the end of the current billing period.</li>
+              <li>Payments are processed by Apple or Google. We do not receive or store your card or payment details.</li>
+              <li>Refunds are handled under the policies of the Apple App Store or Google Play.</li>
+              <li>
+                Where you have a statutory right to cancel a digital purchase, that right may be lost once
+                the subscription content is made available to you immediately with your consent. Any
+                cancellation rights are administered by the relevant app store.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>9. Privacy and Data Protection</h2>
             <p>
               Your privacy is important to us. Our collection and use of your personal information is
               governed by our Privacy Policy, which is incorporated into these Terms by reference.
@@ -106,7 +132,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>9. Service Availability</h2>
+            <h2>10. Service Availability</h2>
             <p>
               We strive to maintain high availability but cannot guarantee uninterrupted access to our Service.
               We may temporarily suspend or restrict access for maintenance, updates, or security reasons.
@@ -115,7 +141,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>10. Intellectual Property</h2>
+            <h2>11. Intellectual Property</h2>
             <p>
               The Service, including all content, features, and functionality, is owned by Expenzez and
               protected by copyright, trademark, and other intellectual property laws. You may not copy,
@@ -124,7 +150,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>11. Limitation of Liability</h2>
+            <h2>12. Limitation of Liability</h2>
             <p>
               TO THE MAXIMUM EXTENT PERMITTED BY LAW, EXPENZEZ SHALL NOT BE LIABLE FOR ANY INDIRECT,
               INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION,
@@ -133,7 +159,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>12. Disclaimers</h2>
+            <h2>13. Disclaimers</h2>
             <p>
               THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM
               ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING:
@@ -147,7 +173,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>13. Termination</h2>
+            <h2>14. Termination</h2>
             <p>
               We may terminate or suspend your account immediately, without prior notice, for any breach
               of these Terms. You may also terminate your account at any time by contacting us. Upon
@@ -156,7 +182,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>14. Changes to Terms</h2>
+            <h2>15. Changes to Terms</h2>
             <p>
               We reserve the right to modify these Terms at any time. We will notify you of any changes
               by posting the new Terms on our website and updating the "Last updated" date. Your continued
@@ -165,7 +191,7 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>15. Governing Law</h2>
+            <h2>16. Governing Law</h2>
             <p>
               These Terms are governed by and construed in accordance with the laws of England and Wales.
               Any disputes arising from these Terms will be subject to the exclusive jurisdiction of the
@@ -174,14 +200,15 @@ const TermsOfService: React.FC = () => {
           </section>
 
           <section>
-            <h2>16. Contact Information</h2>
+            <h2>17. Contact Information</h2>
             <p>
               If you have any questions about these Terms, please contact us:
             </p>
             <div className="terms-contact-box">
+              <p><strong>Company:</strong> Biszaal Tech Ltd (company no. 16693100)</p>
               <p><strong>Email:</strong> <a href="mailto:legal@expenzez.com">legal@expenzez.com</a></p>
               <p><strong>Support:</strong> <a href="mailto:support@expenzez.com">support@expenzez.com</a></p>
-              <p><strong>Address:</strong> London, United Kingdom</p>
+              <p><strong>Address:</strong> 71-75 Shelton Street, London, WC2H 9JQ, United Kingdom</p>
             </div>
           </section>
 

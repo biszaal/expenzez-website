@@ -109,7 +109,10 @@ const Footer: React.FC = () => (
       </div>
 
       <div style={{ marginTop: 56, paddingTop: 24, borderTop: `1px solid ${W.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, fontSize: 12, color: W.faint }}>
-        <span>© {year} Biszaal Tech Ltd · London, United Kingdom.</span>
+        <span style={{ maxWidth: 760, lineHeight: 1.7 }}>
+          © {year} Biszaal Tech Ltd. Registered in England and Wales, company no. 16693100.
+          Registered office: 71-75 Shelton Street, London, WC2H 9JQ. ICO reg. ZC055545.
+        </span>
         <span>Made in London</span>
       </div>
     </div>
