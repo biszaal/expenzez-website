@@ -1,8 +1,13 @@
 # Netlify configuration for expenzez-website
 
 [build]
-  command = "npm run build"
+  # Install the headless Chrome the prerender step needs (scripts/prerender.mjs),
+  # into Netlify's persistent cache so it downloads once and is reused.
+  command = "npx puppeteer browsers install chrome && npm run build"
   publish = "build"
+
+[build.environment]
+  PUPPETEER_CACHE_DIR = "/opt/build/cache/puppeteer"
 
 # Redirect all routes to index.html for React SPA routing
 [[redirects]]
