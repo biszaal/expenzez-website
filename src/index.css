@@ -1384,3 +1384,58 @@ body {
   .hero-bg .blob,
   .ticker-row { animation: none !important; }
 }
+
+/* ============================================================
+   ImportWays — editorial zig-zag rows (replaces 3 equal cards)
+   ============================================================ */
+.how-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.how-stage { perspective: 1500px; display: flex; justify-content: center; }
+.how-row-rev .how-stage { order: 2; } /* device on the right for alternating rows */
+
+/* Floating phone mockup: gentle 3D tilt that straightens + lifts on hover.
+   Kept subtle so the on-screen text stays readable (no heavy foreshortening). */
+.phone-frame {
+  transform: rotateY(5deg);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s ease;
+}
+.how-row-rev .phone-frame { transform: rotateY(-5deg); }
+.how-stage:hover .phone-frame {
+  transform: rotateY(0deg) translateY(-8px);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.65), 0 0 0 1.5px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 860px) {
+  .how-row { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .how-row-rev .how-stage { order: 0 !important; } /* device back on top */
+  .phone-frame { transform: none !important; height: 460px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone-frame,
+  .how-row-rev .phone-frame,
+  .how-stage:hover .phone-frame { transform: none !important; }
+}
+
+/* ============================================================
+   Accessibility + polish: keyboard focus, anchored smooth scroll,
+   balanced headings (no orphans).
+   ============================================================ */
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 88px; } /* clear the sticky navbar on anchor jumps */
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--purple-500);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

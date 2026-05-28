@@ -3,6 +3,7 @@ import { FileText, FileSpreadsheet, PencilLine } from "lucide-react";
 import { W, MAXW } from "../../theme/tokens";
 import Pill from "./Pill";
 import Reveal from "./Reveal";
+import PhoneFrame from "./PhoneFrame";
 
 interface Way {
   icon: React.ReactNode;
@@ -15,7 +16,7 @@ interface Way {
 
 const ways: Way[] = [
   {
-    icon: <FileText size={22} />,
+    icon: <FileText size={24} />,
     accent: W.primary,
     bg: "rgba(157,91,255,0.16)",
     title: "Upload a bank statement PDF",
@@ -23,7 +24,7 @@ const ways: Way[] = [
     shot: "/screenshot-1.png",
   },
   {
-    icon: <FileSpreadsheet size={22} />,
+    icon: <FileSpreadsheet size={24} />,
     accent: W.cyan,
     bg: "rgba(91,200,255,0.16)",
     title: "Import CSV from any UK bank",
@@ -31,7 +32,7 @@ const ways: Way[] = [
     shot: "/screenshot-2.png",
   },
   {
-    icon: <PencilLine size={22} />,
+    icon: <PencilLine size={24} />,
     accent: W.lime,
     bg: "rgba(197,242,92,0.16)",
     title: "Add cash & side income manually",
@@ -43,7 +44,7 @@ const ways: Way[] = [
 const ImportWays: React.FC = () => (
   <section id="how-it-works" style={{ padding: "120px 32px 40px", position: "relative" }}>
     <div style={{ maxWidth: MAXW, margin: "0 auto" }}>
-      <Reveal style={{ textAlign: "center", marginBottom: 64 }}>
+      <Reveal style={{ textAlign: "center", marginBottom: 80 }}>
         <Pill accent>NO BANK CONNECTION REQUIRED</Pill>
         <h2 style={{ fontSize: 56, fontWeight: 600, letterSpacing: -2, lineHeight: 1.05, marginTop: 18, color: W.text }}>
           Get your money in,
@@ -55,66 +56,43 @@ const ImportWays: React.FC = () => (
         </p>
       </Reveal>
 
-      <div className="import-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 72 }}>
         {ways.map((w, i) => (
-          <Reveal key={w.title} delay={i * 90} style={{ display: "flex" }}>
-          <div
-            className="lift"
-            style={{
-              padding: 28,
-              borderRadius: 24,
-              background: W.card,
-              border: `1px solid ${W.border}`,
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div
-                style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 13,
-                  background: w.bg,
-                  color: w.accent,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                {w.icon}
+          <Reveal key={w.title}>
+            <div className={`how-row${i % 2 === 1 ? " how-row-rev" : ""}`}>
+              <div className="how-stage">
+                <PhoneFrame src={w.shot} alt={`Expenzez — ${w.title}`} accent={w.accent} />
               </div>
-              <span style={{ fontFamily: W.mono, fontSize: 13, color: W.faint, fontWeight: 600 }}>
-                0{i + 1}
-              </span>
+
+              <div className="how-copy">
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <div
+                    style={{
+                      width: 52,
+                      height: 52,
+                      borderRadius: 15,
+                      background: w.bg,
+                      color: w.accent,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {w.icon}
+                  </div>
+                  <span style={{ fontFamily: W.mono, fontSize: 14, color: W.faint, fontWeight: 600, letterSpacing: 0.5 }}>
+                    0{i + 1} / 03
+                  </span>
+                </div>
+                <h3 style={{ fontSize: 30, fontWeight: 600, letterSpacing: -0.8, lineHeight: 1.12, marginTop: 22, color: W.text }}>
+                  {w.title}
+                </h3>
+                <p style={{ fontSize: 16, color: W.dim, lineHeight: 1.65, marginTop: 14, maxWidth: 440 }}>
+                  {w.body}
+                </p>
+              </div>
             </div>
-            <div style={{ fontSize: 20, fontWeight: 600, marginTop: 18, color: W.text, letterSpacing: -0.4 }}>
-              {w.title}
-            </div>
-            <p style={{ fontSize: 14, color: W.dim, lineHeight: 1.6, marginTop: 10, flexGrow: 1 }}>
-              {w.body}
-            </p>
-            <div
-              className="shot-zoom"
-              style={{
-                marginTop: 24,
-                height: 300,
-                borderRadius: 18,
-                overflow: "hidden",
-                border: `1px solid ${W.borderHi}`,
-                background: W.bg2,
-              }}
-            >
-              <img
-                src={w.shot}
-                alt={w.title}
-                loading="lazy"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
-              />
-            </div>
-          </div>
           </Reveal>
         ))}
       </div>

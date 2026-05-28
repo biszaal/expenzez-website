@@ -8,6 +8,7 @@ import TermsOfService from './pages/TermsOfService';
 import Support from './pages/Support';
 import AccountDeletion from './pages/AccountDeletion';
 import Download from './pages/Download';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/account-deletion" element={<AccountDeletion />} />
             <Route path="/download" element={<Download />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
