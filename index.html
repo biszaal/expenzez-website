@@ -66,6 +66,16 @@
       <textarea name="message"></textarea>
     </form>
 
+    <!-- Account deletion requests are routed through Netlify too so we have a
+         clear audit trail (UK GDPR Art. 17). privacy@expenzez.com should be
+         the email-notification recipient configured in the Netlify dashboard. -->
+    <form name="deletion-request" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="email" name="email" />
+      <textarea name="reason"></textarea>
+      <input type="text" name="confirmed" />
+    </form>
+
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

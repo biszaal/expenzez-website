@@ -2,32 +2,46 @@ import React, { useState } from 'react';
 import { Mail, AlertTriangle, CheckCircle } from 'lucide-react';
 import Seo from '../components/Seo';
 
+// Netlify Forms expects an application/x-www-form-urlencoded POST to the same
+// origin, with the matching form-name field. The mirror form in index.html is
+// what Netlify's build-time scanner registers.
+const encodeForm = (data: Record<string, string>) =>
+  Object.entries(data)
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join("&");
+
+type SubmitStatus = "idle" | "sending" | "sent" | "error";
+
 const AccountDeletion: React.FC = () => {
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [botField, setBotField] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    // Open the user's email client with a pre-filled deletion request.
-    // privacy@expenzez.com is the official GDPR contact (see below).
-    const subject = encodeURIComponent("Account Deletion Request");
-    const body = encodeURIComponent(
-      `Account email: ${email}\n` +
-        `Reason: ${reason || "(not provided)"}\n\n` +
-        `I confirm I want to permanently delete my Expenzez account and ` +
-        `all associated data in line with UK GDPR.`
-    );
-    window.location.href = `mailto:privacy@expenzez.com?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setLoading(false);
+    setStatus('sending');
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm({
+          'form-name': 'deletion-request',
+          'bot-field': botField,
+          email,
+          reason: reason || '(not provided)',
+          confirmed: 'yes',
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      setStatus('sent');
+    } catch (err) {
+      console.error('Account-deletion submission failed:', err);
+      setStatus('error');
+    }
   };
 
-  if (submitted) {
+  if (status === 'sent') {
     return (
       <div className="support-page">
         <div className="container">
@@ -35,11 +49,10 @@ const AccountDeletion: React.FC = () => {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
               <CheckCircle size={64} color="#10b981" />
             </div>
-            <h1>Check Your Email Client</h1>
+            <h1>Request received</h1>
             <p>
-              Your email client should have opened with a pre-filled deletion
-              request to <strong>privacy@expenzez.com</strong>. Please review
-              and send the email to complete your request.
+              Thanks — your deletion request for <strong>{email}</strong> has been
+              received by our privacy team.
             </p>
           </div>
 
@@ -50,12 +63,12 @@ const AccountDeletion: React.FC = () => {
               </h3>
               <div style={{ textAlign: 'left', color: '#374151' }}>
                 <ol style={{ paddingLeft: '1.5rem', lineHeight: '2' }}>
-                  <li>Send the email from <strong>{email}</strong> (or any address — we'll verify ownership)</li>
-                  <li>We'll confirm receipt within 2 business days</li>
-                  <li>Your account and all associated data will be permanently deleted within 30 days, per UK GDPR</li>
+                  <li>We'll confirm receipt at <strong>{email}</strong> within 2 business days (we'll verify ownership before deleting)</li>
+                  <li>Your account and all associated personal data will be permanently deleted, normally immediately and in any event within 30 days, per UK GDPR Art. 17</li>
+                  <li>The fastest alternative is the in-app deletion: <strong>Settings → Data &amp; Privacy → Delete Account</strong></li>
                 </ol>
                 <p style={{ marginTop: '1.5rem', padding: '1rem', background: '#f3f4f6', borderRadius: '0.5rem' }}>
-                  If your email client didn't open, please email{' '}
+                  If you don't hear from us within 2 business days, please email{' '}
                   <a href="mailto:privacy@expenzez.com">privacy@expenzez.com</a> directly.
                 </p>
               </div>
@@ -140,13 +153,34 @@ const AccountDeletion: React.FC = () => {
           <div className="contact-form" style={{ marginTop: '3rem' }}>
             <h2>Submit Deletion Request</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form
+              name="deletion-request"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+            >
+              {/* Required so Netlify routes the SPA POST to the right form. */}
+              <input type="hidden" name="form-name" value="deletion-request" />
+              {/* Honeypot: real users leave this empty; bots fill every field. */}
+              <p hidden>
+                <label>
+                  Don't fill this out:{' '}
+                  <input
+                    name="bot-field"
+                    value={botField}
+                    onChange={(e) => setBotField(e.target.value)}
+                  />
+                </label>
+              </p>
+
               <div className="form-group">
                 <label className="form-label">
                   Email Address <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input
                   type="email"
+                  name="email"
                   className="form-input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -163,6 +197,7 @@ const AccountDeletion: React.FC = () => {
                   Reason for Deletion (Optional)
                 </label>
                 <textarea
+                  name="reason"
                   className="form-textarea"
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
@@ -212,11 +247,28 @@ const AccountDeletion: React.FC = () => {
               <button
                 type="submit"
                 className="form-submit"
-                disabled={loading}
-                style={{ opacity: loading ? 0.7 : 1 }}
+                disabled={status === 'sending'}
+                style={{ opacity: status === 'sending' ? 0.7 : 1 }}
               >
-                {loading ? 'Submitting...' : 'Submit Deletion Request'}
+                {status === 'sending' ? 'Submitting…' : 'Submit Deletion Request'}
               </button>
+
+              {status === 'error' && (
+                <p
+                  role="alert"
+                  style={{
+                    marginTop: '1rem',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '0.5rem',
+                    background: '#fef2f2',
+                    color: '#991b1b',
+                    border: '1px solid #fecaca',
+                  }}
+                >
+                  Something went wrong submitting your request. Please email{' '}
+                  <a href="mailto:privacy@expenzez.com">privacy@expenzez.com</a> instead.
+                </p>
+              )}
             </form>
           </div>
 
