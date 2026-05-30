@@ -20,27 +20,40 @@ const LinksRow: React.FC<{ onNavigate?: () => void }> = ({ onNavigate }) => (
   </>
 );
 
+// The Expenzez "Spark" mark — cobalt squircle, chunky Baloo 2 "e", ivory sparkle.
 const Logo: React.FC = () => (
   <Link to="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
     <div
       style={{
-        width: 32,
-        height: 32,
+        position: "relative",
+        width: 34,
+        height: 34,
         borderRadius: 9,
-        background: `linear-gradient(135deg, ${W.primary}, ${W.primaryDim})`,
+        background: `linear-gradient(135deg, ${W.cyan}, ${W.primary} 55%, ${W.primaryDim})`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         boxShadow: `0 6px 18px ${W.primaryGlow}`,
       }}
     >
-      <svg width="18" height="18" viewBox="0 0 32 32">
-        <path d="M5 24 L13 14 L18 18 L27 8" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M22 8 L27 8 L27 13" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <span
+        style={{
+          fontFamily: "'Baloo 2', system-ui, sans-serif",
+          fontWeight: 800,
+          fontSize: 23,
+          lineHeight: 1,
+          color: "#EEF1FA",
+          marginTop: -1,
+        }}
+      >
+        e
+      </span>
+      <svg width="11" height="11" viewBox="0 0 24 24" aria-hidden style={{ position: "absolute", top: 4, right: 4 }}>
+        <path d="M12 1 Q13.4 8.6 23 11 Q13.4 13.4 12 23 Q10.6 13.4 1 11 Q10.6 8.6 12 1 Z" fill="#EEF1FA" />
       </svg>
     </div>
-    <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: -0.4, color: W.text }}>
-      expenzez<span style={{ color: W.lime }}>.</span>
+    <span style={{ fontFamily: "'Baloo 2', system-ui, sans-serif", fontSize: 20, fontWeight: 700, letterSpacing: -0.3, color: W.text }}>
+      expenzez
     </span>
   </Link>
 );
@@ -68,7 +81,7 @@ const Navbar: React.FC = () => {
         zIndex: 100,
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        background: "rgba(7,5,12,0.7)",
+        background: "rgba(10,18,38,0.7)",
         borderBottom: `1px solid ${W.border}`,
       }}
     >
@@ -103,7 +116,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {open && (
-        <div className="nav-mobile" style={{ borderTop: `1px solid ${W.border}`, background: "rgba(7,5,12,0.96)", padding: "12px 24px 20px" }}>
+        <div className="nav-mobile" style={{ borderTop: `1px solid ${W.border}`, background: "rgba(10,18,38,0.96)", padding: "12px 24px 20px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 14, paddingTop: 8 }}>
             <LinksRow onNavigate={close} />
             <Link to="/download" onClick={close} className="btn-press" style={{ ...ctaStyle, textAlign: "center", marginTop: 6 }}>

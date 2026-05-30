@@ -18,7 +18,7 @@ const ways: Way[] = [
   {
     icon: <FileText size={24} />,
     accent: W.primary,
-    bg: "rgba(157,91,255,0.16)",
+    bg: "rgba(78,124,255,0.16)",
     title: "Upload a bank statement PDF",
     body: "Drop in the PDF your bank already gives you. Expenzez reads every transaction and categorises it with AI — no bank login, no Open Banking connection.",
     shot: "/screenshot-1.png",
@@ -34,7 +34,7 @@ const ways: Way[] = [
   {
     icon: <PencilLine size={24} />,
     accent: W.lime,
-    bg: "rgba(197,242,92,0.16)",
+    bg: "rgba(95,227,161,0.16)",
     title: "Add cash & side income manually",
     body: "Log cash spending, tips, or freelance income in seconds. Everything lands in the same dashboard alongside your imported transactions.",
     shot: "/screenshot-3.png",

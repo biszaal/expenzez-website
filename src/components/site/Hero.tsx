@@ -143,7 +143,7 @@ const Hero: React.FC = () => (
                 width: 28,
                 height: 28,
                 borderRadius: 9,
-                background: "rgba(197,242,92,0.16)",
+                background: "rgba(95,227,161,0.16)",
                 color: W.lime,
                 display: "flex",
                 alignItems: "center",

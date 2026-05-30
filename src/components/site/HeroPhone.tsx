@@ -45,7 +45,7 @@ const HeroPhone: React.FC = () => (
             width: 30,
             height: 30,
             borderRadius: 10,
-            background: "linear-gradient(135deg, #FF8AB3, #9D5BFF)",
+            background: "linear-gradient(135deg, #7DA0FF, #4E7CFF)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -73,7 +73,7 @@ const HeroPhone: React.FC = () => (
           style={{
             marginTop: 6,
             display: "inline-block",
-            background: "rgba(197,242,92,0.14)",
+            background: "rgba(95,227,161,0.14)",
             color: W.lime,
             padding: "3px 8px",
             borderRadius: 7,
@@ -129,7 +129,7 @@ const HeroPhone: React.FC = () => (
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 11, color: W.text, fontWeight: 600 }}>Monthly budget</div>
           <div style={{ fontSize: 9, color: W.dim, marginTop: 2 }}>£1,768 of £2,600</div>
-          <div style={{ display: "inline-block", marginTop: 4, fontSize: 8, fontWeight: 700, padding: "2px 6px", borderRadius: 5, background: "rgba(197,242,92,0.14)", color: W.lime }}>
+          <div style={{ display: "inline-block", marginTop: 4, fontSize: 8, fontWeight: 700, padding: "2px 6px", borderRadius: 5, background: "rgba(95,227,161,0.14)", color: W.lime }}>
             ON TRACK
           </div>
         </div>
@@ -141,8 +141,8 @@ const HeroPhone: React.FC = () => (
           marginTop: 10,
           padding: 11,
           borderRadius: 13,
-          background: "linear-gradient(135deg, rgba(157,91,255,0.18), rgba(197,242,92,0.06))",
-          border: "1px solid rgba(157,91,255,0.25)",
+          background: "linear-gradient(135deg, rgba(78,124,255,0.18), rgba(95,227,161,0.06))",
+          border: "1px solid rgba(78,124,255,0.25)",
           display: "flex",
           gap: 9,
           alignItems: "flex-start",

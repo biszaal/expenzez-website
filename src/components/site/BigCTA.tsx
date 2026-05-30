@@ -28,7 +28,7 @@ const BigCTA: React.FC = () => (
           transform: "translateX(-50%)",
           width: 800,
           height: 500,
-          background: "radial-gradient(ellipse, rgba(197,242,92,0.4), transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(95,227,161,0.4), transparent 65%)",
           pointerEvents: "none",
         }}
       />

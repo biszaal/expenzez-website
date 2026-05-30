@@ -87,7 +87,7 @@ const Pricing: React.FC = () => (
             width: "100%",
           }}
         >
-          <div style={{ position: "absolute", top: -80, right: -80, width: 280, height: 280, background: "radial-gradient(circle, rgba(197,242,92,0.3), transparent 65%)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: -80, right: -80, width: 280, height: 280, background: "radial-gradient(circle, rgba(95,227,161,0.3), transparent 65%)", pointerEvents: "none" }} />
           <div style={{ position: "relative" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ fontSize: 14, fontWeight: 700 }}>Pro</div>

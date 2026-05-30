@@ -45,13 +45,13 @@ const FeatureBento: React.FC = () => (
             gridRow: "span 2",
             padding: 36,
             borderRadius: 28,
-            background: "linear-gradient(135deg, rgba(157,91,255,0.16), rgba(197,242,92,0.04))",
+            background: "linear-gradient(135deg, rgba(78,124,255,0.16), rgba(95,227,161,0.04))",
             border: `1px solid ${W.borderHi}`,
             position: "relative",
             overflow: "hidden",
           }}
         >
-          <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, background: "radial-gradient(circle, rgba(157,91,255,0.2), transparent 65%)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, background: "radial-gradient(circle, rgba(78,124,255,0.2), transparent 65%)", pointerEvents: "none" }} />
           <div style={{ position: "relative" }}>
             <div style={{ ...iconWrap(`linear-gradient(135deg, ${W.primary}, ${W.primaryDim})`, "#fff"), width: 48, height: 48, borderRadius: 14, boxShadow: `0 12px 28px ${W.primaryGlow}` }}>
               <Sparkles size={24} />
@@ -87,7 +87,7 @@ const FeatureBento: React.FC = () => (
 
         {/* Budgets */}
         <div className="lift" style={tileBase}>
-          <div style={iconWrap("rgba(197,242,92,0.14)", W.lime)}>
+          <div style={iconWrap("rgba(95,227,161,0.14)", W.lime)}>
             <Target size={22} />
           </div>
           <div style={{ fontSize: 18, fontWeight: 600, marginTop: 18, color: W.text, letterSpacing: -0.3 }}>Budgets that actually work</div>
@@ -113,7 +113,7 @@ const FeatureBento: React.FC = () => (
 
         {/* Subscriptions — flag recurring charges from your transactions (no bank auto-cancel) */}
         <div className="lift" style={tileBase}>
-          <div style={iconWrap("rgba(157,91,255,0.18)", "#C29CFF")}>
+          <div style={iconWrap("rgba(78,124,255,0.18)", "#9CB4FF")}>
             <RefreshCw size={22} />
           </div>
           <div style={{ fontSize: 18, fontWeight: 600, marginTop: 18, color: W.text, letterSpacing: -0.3 }}>Spot recurring charges</div>

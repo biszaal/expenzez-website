@@ -61,14 +61,14 @@ const Footer: React.FC = () => (
       <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr 1fr", gap: 48 }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 9, background: `linear-gradient(135deg, ${W.primary}, ${W.primaryDim})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg width="18" height="18" viewBox="0 0 32 32">
-                <path d="M5 24 L13 14 L18 18 L27 8" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M22 8 L27 8 L27 13" stroke="#fff" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <div style={{ position: "relative", width: 32, height: 32, borderRadius: 9, background: `linear-gradient(135deg, ${W.cyan}, ${W.primary} 55%, ${W.primaryDim})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontFamily: "'Baloo 2', system-ui, sans-serif", fontWeight: 800, fontSize: 21, lineHeight: 1, color: "#EEF1FA", marginTop: -1 }}>e</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" aria-hidden style={{ position: "absolute", top: 4, right: 4 }}>
+                <path d="M12 1 Q13.4 8.6 23 11 Q13.4 13.4 12 23 Q10.6 13.4 1 11 Q10.6 8.6 12 1 Z" fill="#EEF1FA" />
               </svg>
             </div>
-            <span style={{ fontSize: 18, fontWeight: 700, color: W.text }}>
-              expenzez<span style={{ color: W.lime }}>.</span>
+            <span style={{ fontFamily: "'Baloo 2', system-ui, sans-serif", fontSize: 19, fontWeight: 700, color: W.text }}>
+              expenzez
             </span>
           </div>
           <p style={{ fontSize: 13, color: W.dim, lineHeight: 1.6, margin: 0, maxWidth: 280 }}>

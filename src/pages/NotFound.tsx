@@ -21,7 +21,7 @@ const NotFound: React.FC = () => (
         transform: "translateX(-50%)",
         width: 800,
         height: 500,
-        background: "radial-gradient(ellipse, rgba(157,91,255,0.18), transparent 62%)",
+        background: "radial-gradient(ellipse, rgba(78,124,255,0.18), transparent 62%)",
         pointerEvents: "none",
       }}
     />

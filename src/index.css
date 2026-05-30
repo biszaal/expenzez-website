@@ -8,41 +8,42 @@
    ============================================================ */
 
 :root {
-  /* Dark fintech theme — electric purple (#9D5BFF) + lime (#C5F25C) on warm black */
-  --purple-50: #F5EFFD;
-  --purple-100: #E8DAFB;
-  --purple-200: #D6BBF7;
-  --purple-300: #C29CFF;
-  --purple-400: #B07DFF;
-  --purple-500: #9D5BFF;
-  --purple-600: #8341E6;
-  --purple-700: #6B2EB8;
-  --purple-800: #4E2090;
-  --purple-900: #2E1359;
-  --purple-glow: rgba(157, 91, 255, 0.35);
+  /* Dark fintech theme — Midnight Cobalt (#4E7CFF) + mint (#5FE3A1) on deep navy.
+     Var names kept as --purple-*/--lime-* for stability; values are now cobalt/mint. */
+  --purple-50: #EAEFFE;
+  --purple-100: #D6E0FE;
+  --purple-200: #B0C4FC;
+  --purple-300: #9CB4FF;
+  --purple-400: #6E93FF;
+  --purple-500: #4E7CFF;
+  --purple-600: #3E66E0;
+  --purple-700: #3559CC;
+  --purple-800: #2B47A6;
+  --purple-900: #16245A;
+  --purple-glow: rgba(78, 124, 255, 0.35);
 
-  --lime-100: #EAF7C9;
-  --lime-500: #C5F25C;
-  --lime-600: #B6E84A;
-  --lime-700: #A7DA38;
+  --lime-100: #C6F1DE;
+  --lime-500: #5FE3A1;
+  --lime-600: #4FD391;
+  --lime-700: #3FC07F;
 
-  --cyan-500: #5BC8FF;
-  --cyan-600: #3FB0EE;
+  --cyan-500: #7DA0FF;
+  --cyan-600: #5A7BE8;
 
-  --bg: #07050C;
-  --bg-soft: #0F0A1A;
-  --bg-tint: #161122;
-  --card: #161122;
-  --card-hi: #1B1428;
-  --night: #07050C;
-  --night-soft: #0F0A1A;
-  --night-card: #161122;
+  --bg: #0A1226;
+  --bg-soft: #0D1630;
+  --bg-tint: #10193A;
+  --card: #10193A;
+  --card-hi: #16224D;
+  --night: #0A1226;
+  --night-soft: #0D1630;
+  --night-card: #10193A;
 
-  --ink: #F4F1FA;
-  --ink-soft: rgba(244, 241, 250, 0.62);
-  --ink-muted: rgba(244, 241, 250, 0.40);
-  --line: rgba(255, 255, 255, 0.08);
-  --line-soft: rgba(255, 255, 255, 0.05);
+  --ink: #EEF1FA;
+  --ink-soft: rgba(238, 241, 250, 0.62);
+  --ink-muted: rgba(238, 241, 250, 0.40);
+  --line: rgba(180, 200, 255, 0.09);
+  --line-soft: rgba(180, 200, 255, 0.06);
 
   --radius-sm: 12px;
   --radius-md: 16px;
@@ -54,7 +55,7 @@
   --shadow-soft: 0 4px 20px -6px rgba(0, 0, 0, 0.55);
   --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
   --shadow-glow: 0 14px 34px -10px var(--purple-glow);
-  --shadow-glow-strong: 0 24px 54px -12px rgba(157, 91, 255, 0.45);
+  --shadow-glow-strong: 0 24px 54px -12px rgba(78, 124, 255, 0.45);
 }
 
 @layer utilities {
@@ -237,9 +238,9 @@ body {
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 18%, rgba(123, 63, 228, 0.14), transparent 55%),
+    radial-gradient(circle at 12% 18%, rgba(37, 71, 240, 0.14), transparent 55%),
     radial-gradient(circle at 88% 28%, rgba(45, 125, 184, 0.12), transparent 50%),
-    radial-gradient(circle at 50% 110%, rgba(197, 242, 92, 0.18), transparent 55%),
+    radial-gradient(circle at 50% 110%, rgba(95, 227, 161, 0.18), transparent 55%),
     var(--bg);
 }
 
@@ -248,8 +249,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(123, 63, 228, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(123, 63, 228, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(37, 71, 240, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 71, 240, 0.04) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
@@ -265,9 +266,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(123, 63, 228, 0.08);
+  background: rgba(37, 71, 240, 0.08);
   color: var(--purple-600);
-  border: 1px solid rgba(123, 63, 228, 0.18);
+  border: 1px solid rgba(37, 71, 240, 0.18);
   padding: 0.4rem 0.9rem;
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
@@ -281,7 +282,7 @@ body {
   height: 7px;
   border-radius: 50%;
   background: var(--lime-500);
-  box-shadow: 0 0 0 4px rgba(92, 133, 25, 0.18);
+  box-shadow: 0 0 0 4px rgba(19, 160, 107, 0.18);
 }
 
 .hero h1 {
@@ -450,7 +451,7 @@ body {
 
 .feature-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(123, 63, 228, 0.25);
+  border-color: rgba(37, 71, 240, 0.25);
   box-shadow: var(--shadow-glow);
 }
 
@@ -464,12 +465,12 @@ body {
   justify-content: center;
   margin-bottom: 1.25rem;
   color: #fff;
-  box-shadow: 0 8px 16px -6px rgba(123, 63, 228, 0.45);
+  box-shadow: 0 8px 16px -6px rgba(37, 71, 240, 0.45);
 }
 
 .feature-icon.lime {
   background: linear-gradient(135deg, var(--lime-500) 0%, var(--lime-700) 100%);
-  box-shadow: 0 8px 16px -6px rgba(92, 133, 25, 0.45);
+  box-shadow: 0 8px 16px -6px rgba(19, 160, 107, 0.45);
 }
 
 .feature-icon.cyan {
@@ -563,7 +564,7 @@ body {
   text-align: center;
   color: #fff;
   overflow: hidden;
-  box-shadow: 0 30px 70px -20px rgba(123, 63, 228, 0.50);
+  box-shadow: 0 30px 70px -20px rgba(37, 71, 240, 0.50);
 }
 
 .cta-card::before {
@@ -571,7 +572,7 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 30%, rgba(197, 242, 92, 0.18), transparent 40%),
+    radial-gradient(circle at 15% 30%, rgba(95, 227, 161, 0.18), transparent 40%),
     radial-gradient(circle at 85% 80%, rgba(91, 200, 255, 0.18), transparent 40%);
   pointer-events: none;
 }
@@ -785,7 +786,7 @@ body {
   left: 0;
   right: 0;
   height: 280px;
-  background: radial-gradient(circle at 50% 0%, rgba(123, 63, 228, 0.12), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(37, 71, 240, 0.12), transparent 70%);
   pointer-events: none;
 }
 
@@ -829,7 +830,7 @@ body {
 
 .support-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(123, 63, 228, 0.25);
+  border-color: rgba(37, 71, 240, 0.25);
   box-shadow: var(--shadow-glow);
 }
 
@@ -843,7 +844,7 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 8px 16px -6px rgba(123, 63, 228, 0.45);
+  box-shadow: 0 8px 16px -6px rgba(37, 71, 240, 0.45);
 }
 
 .support-card h3 {
@@ -908,7 +909,7 @@ body {
 }
 
 .faq-item:hover {
-  border-color: rgba(123, 63, 228, 0.25);
+  border-color: rgba(37, 71, 240, 0.25);
 }
 
 .faq-question {
@@ -929,7 +930,7 @@ body {
 }
 
 .faq-question:hover {
-  background: rgba(123, 63, 228, 0.04);
+  background: rgba(37, 71, 240, 0.04);
 }
 
 .faq-icon {
@@ -986,7 +987,7 @@ body {
 .form-textarea:focus {
   outline: none;
   border-color: var(--purple-500);
-  box-shadow: 0 0 0 3px rgba(123, 63, 228, 0.14);
+  box-shadow: 0 0 0 3px rgba(37, 71, 240, 0.14);
 }
 
 .form-textarea {
@@ -1091,7 +1092,7 @@ body {
 
 .privacy-contact-box {
   background: var(--bg-tint);
-  border: 1px solid rgba(123, 63, 228, 0.18);
+  border: 1px solid rgba(37, 71, 240, 0.18);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-top: 2rem;
@@ -1146,11 +1147,11 @@ body {
 .support-page::before,
 .privacy-page::before,
 .terms-page::before {
-  background: radial-gradient(circle at 50% 0%, rgba(157, 91, 255, 0.16), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(78, 124, 255, 0.16), transparent 70%);
 }
 
 .faq-question:hover {
-  background: rgba(157, 91, 255, 0.07);
+  background: rgba(78, 124, 255, 0.07);
 }
 
 .form-input::placeholder,
@@ -1228,7 +1229,7 @@ body {
 .btn-press { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, filter 0.3s ease; }
 .btn-press:hover { transform: translateY(-2px); }
 .btn-press:active { transform: translateY(0) scale(0.97); }
-.btn-glow:hover { filter: brightness(1.05); box-shadow: 0 20px 46px rgba(157, 91, 255, 0.5); }
+.btn-glow:hover { filter: brightness(1.05); box-shadow: 0 20px 46px rgba(78, 124, 255, 0.5); }
 
 /* Screenshot zoom inside a clipped frame */
 .shot-zoom img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -1295,17 +1296,17 @@ body {
 }
 .hero-bg .blob-1 {
   width: 600px; height: 600px; top: -180px; left: -120px;
-  background: radial-gradient(circle, #9d5bff, transparent 65%);
+  background: radial-gradient(circle, #4e7cff, transparent 65%);
   animation: drift1 22s ease-in-out infinite;
 }
 .hero-bg .blob-2 {
   width: 500px; height: 500px; top: 120px; right: -100px;
-  background: radial-gradient(circle, #6b2eb8, transparent 65%);
+  background: radial-gradient(circle, #3559cc, transparent 65%);
   animation: drift2 28s ease-in-out infinite;
 }
 .hero-bg .blob-3 {
   width: 400px; height: 400px; bottom: -120px; left: 30%;
-  background: radial-gradient(circle, rgba(197, 242, 92, 0.6), transparent 65%);
+  background: radial-gradient(circle, rgba(95, 227, 161, 0.6), transparent 65%);
   animation: drift3 32s ease-in-out infinite;
   opacity: 0.35;
 }

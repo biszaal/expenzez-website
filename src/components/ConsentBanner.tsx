@@ -43,7 +43,7 @@ const ConsentBanner: React.FC = () => {
     >
       <p style={{ margin: 0, fontSize: "0.9rem", color: "#F4F1FA" }}>
         We use privacy-respecting analytics to improve Expenzez. See our{" "}
-        <Link to="/privacy" style={{ color: "#C29CFF" }}>
+        <Link to="/privacy" style={{ color: "#9CB4FF" }}>
           Privacy Policy
         </Link>
         .

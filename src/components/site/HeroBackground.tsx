@@ -13,24 +13,24 @@ type Chip = { dot: string; label: string; amount: string };
 
 const ROW_ONE: Chip[] = [
   { dot: "#FF95B0", label: "Tesco Stores", amount: "£32.40" },
-  { dot: "#C5F25C", label: "Salary · Lloyds", amount: "£2,950.00" },
+  { dot: "#5FE3A1", label: "Salary · Lloyds", amount: "£2,950.00" },
   { dot: "#7AD4FF", label: "Uber", amount: "£14.50" },
-  { dot: "#C29CFF", label: "Spotify Premium", amount: "£9.99" },
+  { dot: "#9CB4FF", label: "Spotify Premium", amount: "£9.99" },
   { dot: "#FFB48A", label: "Octopus Energy", amount: "£87.20" },
-  { dot: "#C5F25C", label: "Refund · ASOS", amount: "£24.99" },
+  { dot: "#5FE3A1", label: "Refund · ASOS", amount: "£24.99" },
   { dot: "#FFB48A", label: "Pret", amount: "£6.75" },
-  { dot: "#C5F25C", label: "Transfer · Sarah", amount: "£45.00" },
+  { dot: "#5FE3A1", label: "Transfer · Sarah", amount: "£45.00" },
 ];
 
 const ROW_TWO: Chip[] = [
   { dot: "#FFD97A", label: "Sainsbury's", amount: "£42.10" },
-  { dot: "#C29CFF", label: "Netflix", amount: "£14.99" },
+  { dot: "#9CB4FF", label: "Netflix", amount: "£14.99" },
   { dot: "#7AD4FF", label: "Train · TfL", amount: "£2.80" },
   { dot: "#FF95B0", label: "ATM", amount: "£50.00" },
   { dot: "#9FAFFF", label: "Pension", amount: "£200.00" },
   { dot: "#7BE5B0", label: "Gym", amount: "£39.00" },
   { dot: "#FFB48A", label: "Amazon UK", amount: "£18.45" },
-  { dot: "#C5F25C", label: "Salary · part-time", amount: "£340.00" },
+  { dot: "#5FE3A1", label: "Salary · part-time", amount: "£340.00" },
 ];
 
 // The set is rendered twice so a -50% translate loops seamlessly.
