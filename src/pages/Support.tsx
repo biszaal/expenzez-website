@@ -4,20 +4,51 @@ import { faqs } from "../data/faqs";
 import { FaqSchema } from "../components/StructuredData";
 import Seo from "../components/Seo";
 
+// Netlify Forms expects an application/x-www-form-urlencoded POST to the same
+// origin, with the matching form-name field. This matches the hidden form in
+// index.html that Netlify's build-time scanner sees.
+const encodeForm = (data: Record<string, string>) =>
+  Object.entries(data)
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join("&");
+
+type SubmitStatus = "idle" | "sending" | "sent" | "error";
+
 const Support: React.FC = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("General question");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [botField, setBotField] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailSubject = encodeURIComponent(`[Support] ${subject}`);
-    const mailBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
-    );
-    window.location.href = `mailto:support@expenzez.com?subject=${mailSubject}&body=${mailBody}`;
+    setStatus("sending");
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeForm({
+          "form-name": "support",
+          "bot-field": botField,
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setSubject("General question");
+      setMessage("");
+    } catch (err) {
+      console.error("Support form submission failed:", err);
+      setStatus("error");
+    }
   };
 
   const toggleFaq = (index: number) => {
@@ -115,11 +146,32 @@ const Support: React.FC = () => {
             Biszaal Tech Ltd · London, UK — we're here to help.
           </p>
 
-          <form onSubmit={handleSubmit}>
+          <form
+            name="support"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+          >
+            {/* Required so Netlify routes the SPA POST to the right form. */}
+            <input type="hidden" name="form-name" value="support" />
+            {/* Honeypot: real users leave this empty; bots fill every field. */}
+            <p hidden>
+              <label>
+                Don't fill this out:{" "}
+                <input
+                  name="bot-field"
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                />
+              </label>
+            </p>
+
             <div className="form-group">
               <label className="form-label">Name</label>
               <input
                 type="text"
+                name="name"
                 className="form-input"
                 placeholder="Your name"
                 value={name}
@@ -132,6 +184,7 @@ const Support: React.FC = () => {
               <label className="form-label">Email</label>
               <input
                 type="email"
+                name="email"
                 className="form-input"
                 placeholder="you@email.com"
                 value={email}
@@ -143,6 +196,7 @@ const Support: React.FC = () => {
             <div className="form-group">
               <label className="form-label">Subject</label>
               <select
+                name="subject"
                 className="form-select"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
@@ -163,6 +217,7 @@ const Support: React.FC = () => {
             <div className="form-group">
               <label className="form-label">Message</label>
               <textarea
+                name="message"
                 className="form-textarea"
                 placeholder="Please describe your question or issue in as much detail as possible…"
                 value={message}
@@ -171,9 +226,46 @@ const Support: React.FC = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="form-submit">
-              Send message
+            <button
+              type="submit"
+              className="form-submit"
+              disabled={status === "sending"}
+              style={{ opacity: status === "sending" ? 0.7 : 1 }}
+            >
+              {status === "sending" ? "Sending…" : "Send message"}
             </button>
+
+            {status === "sent" && (
+              <p
+                role="status"
+                style={{
+                  marginTop: "1rem",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "0.5rem",
+                  background: "#ecfdf5",
+                  color: "#065f46",
+                  border: "1px solid #a7f3d0",
+                }}
+              >
+                Thanks — your message is on its way. We usually reply within a day.
+              </p>
+            )}
+            {status === "error" && (
+              <p
+                role="alert"
+                style={{
+                  marginTop: "1rem",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "0.5rem",
+                  background: "#fef2f2",
+                  color: "#991b1b",
+                  border: "1px solid #fecaca",
+                }}
+              >
+                Something went wrong sending your message. Please email{" "}
+                <a href="mailto:support@expenzez.com">support@expenzez.com</a> instead.
+              </p>
+            )}
           </form>
         </div>
       </div>

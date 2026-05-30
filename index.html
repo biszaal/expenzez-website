@@ -52,6 +52,20 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!--
+      Hidden Netlify Forms detection form. The Support page submits via fetch to
+      this name; this static copy is what Netlify's build-time scanner sees so
+      the form is registered. Field names must match the React form exactly.
+    -->
+    <form name="support" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
