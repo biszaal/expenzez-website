@@ -9,7 +9,7 @@
 
 :root {
   /* Dark fintech theme — Midnight Cobalt (#4E7CFF) + mint (#5FE3A1) on deep navy.
-     Var names kept as --purple-*/--lime-* for stability; values are now cobalt/mint. */
+     Var names kept on the purple-/lime- prefixes for stability; values are now cobalt/mint. */
   --purple-50: #EAEFFE;
   --purple-100: #D6E0FE;
   --purple-200: #B0C4FC;
