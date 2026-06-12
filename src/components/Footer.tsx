@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { W, MAXW } from "../theme/tokens";
 import { SOCIAL, storeUrl } from "../config/links";
 import { trackDownload } from "../lib/analytics";
+import SubscribeForm from "./SubscribeForm";
 
 const year = new Date().getFullYear();
 
@@ -107,6 +108,8 @@ const Footer: React.FC = () => (
           </div>
         ))}
       </div>
+
+      <SubscribeForm />
 
       <div style={{ marginTop: 56, paddingTop: 24, borderTop: `1px solid ${W.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, fontSize: 12, color: W.faint }}>
         <span style={{ maxWidth: 760, lineHeight: 1.7 }}>
