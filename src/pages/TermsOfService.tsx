@@ -42,6 +42,11 @@ const TermsOfService: React.FC = () => {
               Expenzez does not connect to your bank, does not access your bank accounts, and never moves
               money. It is not a bank, payment service, or regulated financial adviser.
             </p>
+            <p>
+              The free version of Expenzez is supported by third-party advertising (Google AdMob).
+              <strong> Expenzez Pro removes all ads.</strong> How advertising data is collected and your
+              choices around personalised ads are explained in our Privacy Policy.
+            </p>
           </section>
 
           <section>
@@ -115,6 +120,7 @@ const TermsOfService: React.FC = () => {
               <li>You can manage or cancel your subscription at any time in your Apple or Google account settings; cancellation takes effect at the end of the current billing period.</li>
               <li>Payments are processed by Apple or Google. We do not receive or store your card or payment details.</li>
               <li>Refunds are handled under the policies of the Apple App Store or Google Play.</li>
+              <li>Expenzez Pro removes the ads shown in the free version of the app.</li>
               <li>
                 Where you have a statutory right to cancel a digital purchase, that right may be lost once
                 the subscription content is made available to you immediately with your consent. Any

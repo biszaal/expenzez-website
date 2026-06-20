@@ -87,6 +87,7 @@ const PrivacyPolicy: React.FC = () => {
               <li>Device type, operating system and app version</li>
               <li>App-usage analytics (screens viewed, features used) — <strong>only if you consent</strong></li>
               <li>Crash and diagnostic reports — <strong>only if you consent</strong></li>
+              <li>Advertising identifiers (such as the Apple IDFA or the Google Advertising ID) and limited ad-interaction data — used by our advertising partner to show ads in the free version of the app (see section 7). <strong>Expenzez Pro subscribers do not see ads.</strong></li>
             </ul>
             <p>
               Analytics and crash reporting are switched <strong>off by default</strong>. You can turn them
@@ -121,6 +122,10 @@ const PrivacyPolicy: React.FC = () => {
                 <tr>
                   <td style={{ borderBottom: '1px solid #f1f1f1', padding: '0.5rem' }}>Analytics and crash reporting</td>
                   <td style={{ borderBottom: '1px solid #f1f1f1', padding: '0.5rem' }}>Your consent (which you can withdraw at any time)</td>
+                </tr>
+                <tr>
+                  <td style={{ borderBottom: '1px solid #f1f1f1', padding: '0.5rem' }}>Showing ads in the free version of the app</td>
+                  <td style={{ borderBottom: '1px solid #f1f1f1', padding: '0.5rem' }}>Our legitimate interest in offering a free, ad-supported tier (non-personalised ads); your consent (personalised ads)</td>
                 </tr>
                 <tr>
                   <td style={{ borderBottom: '1px solid #f1f1f1', padding: '0.5rem' }}>Account security, preventing fraud and abuse</td>
@@ -170,6 +175,7 @@ const PrivacyPolicy: React.FC = () => {
               <li><strong>Google / Firebase</strong> — app analytics and (where used) sign-in and address lookup (only with your consent for analytics)</li>
               <li><strong>Sentry</strong> — crash and error diagnostics (only with your consent)</li>
               <li><strong>RevenueCat, Apple and Google</strong> — subscription management and billing</li>
+              <li><strong>Google AdMob</strong> — advertising in the free version of the app (see section 7)</li>
             </ul>
             <p>
               We may also disclose data where required by law, to protect our rights or users' safety, or
@@ -178,7 +184,31 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>7. International data transfers</h2>
+            <h2>7. Advertising</h2>
+            <p>
+              The free version of Expenzez is supported by ads. We use <strong>Google AdMob</strong> to show
+              ads in the app. <strong>Expenzez Pro subscribers do not see any ads.</strong>
+            </p>
+            <p>
+              To show ads, Google AdMob and its partners may collect and use a mobile advertising identifier
+              (the Apple IDFA on iOS or the Google Advertising ID on Android), together with limited
+              information about your device and how you interact with ads. Google acts as an independent
+              controller for ad delivery and measurement; see Google's{' '}
+              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies</a>{' '}
+              for details. <strong>We never share the financial data you enter with advertisers, and your
+              transactions are never used to target ads.</strong>
+            </p>
+            <p><strong>Your choices:</strong></p>
+            <ul>
+              <li><strong>Personalised vs non-personalised ads.</strong> In the UK and EEA we ask for your consent (via Google's consent prompt) before showing personalised ads. If you decline, you will still see ads, but they will be non-personalised.</li>
+              <li><strong>iOS App Tracking Transparency.</strong> On iOS we ask permission before using your advertising identifier (IDFA). If you decline, ads are non-personalised. You can change this under <strong>iOS Settings → Privacy &amp; Security → Tracking</strong>.</li>
+              <li><strong>Android.</strong> You can reset or delete your Advertising ID, or opt out of ad personalisation, under <strong>Android Settings → Privacy → Ads</strong>.</li>
+              <li><strong>Remove ads entirely.</strong> Upgrade to Expenzez Pro to use the app with no ads.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>8. International data transfers</h2>
             <p>
               Your data is stored in the United Kingdom. However, some of our service providers (including
               OpenAI, Google, Sentry and RevenueCat) process data in the United States or other countries
@@ -190,7 +220,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>8. How long we keep your data</h2>
+            <h2>9. How long we keep your data</h2>
             <p>
               We keep your personal data for as long as your account is active. When you delete your
               account, we permanently delete your personal data and the financial data you entered,
@@ -201,7 +231,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>9. How we protect your data</h2>
+            <h2>10. How we protect your data</h2>
             <ul>
               <li>Encryption of data in transit (TLS) and at rest</li>
               <li>Optional PIN and biometric (Face ID / fingerprint) lock on your device</li>
@@ -215,7 +245,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>10. Your rights</h2>
+            <h2>11. Your rights</h2>
             <p>Under UK GDPR you have the right to:</p>
             <ul>
               <li>Access a copy of your personal data</li>
@@ -237,7 +267,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>11. Children</h2>
+            <h2>12. Children</h2>
             <p>
               Expenzez is intended only for adults. You must be <strong>18 or over</strong> to create an
               account, and we ask for your date of birth at sign-up to confirm this. The Service is not
@@ -248,17 +278,18 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>12. Cookies and similar technologies</h2>
+            <h2>13. Cookies and similar technologies</h2>
             <p>
               Our website uses only essential cookies by default. Analytics cookies are set only after you
               accept them via the cookie banner. In the app, analytics and crash-reporting identifiers are
               used only if you opt in under <strong>Settings → Data &amp; Privacy</strong>. You can change
-              your choice at any time.
+              your choice at any time. In the free version of the app, advertising identifiers are also used
+              to show ads — see section 7. Expenzez Pro removes ads.
             </p>
           </section>
 
           <section>
-            <h2>13. Changes to this policy</h2>
+            <h2>14. Changes to this policy</h2>
             <p>
               We may update this Privacy Policy from time to time. We will post the updated version here and
               change the "Last updated" date. Where changes are significant, we will take reasonable steps to
@@ -267,7 +298,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
           <section>
-            <h2>14. Contact us</h2>
+            <h2>15. Contact us</h2>
             <div className="privacy-contact-box">
               <p><strong>Company:</strong> Biszaal Tech Ltd</p>
               <p><strong>Privacy &amp; data requests:</strong> <a href="mailto:privacy@expenzez.com">privacy@expenzez.com</a></p>
